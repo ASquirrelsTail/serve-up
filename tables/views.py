@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.views.generic.detail import SingleObjectMixin
+from tables.models import Table
 
-# Create your views here.
+
+class TableMixin(SingleObjectMixin):
+    model = Table
+    slug_field = 'uuid'

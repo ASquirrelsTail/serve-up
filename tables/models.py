@@ -16,4 +16,4 @@ class Table(models.Model):
 
     @property
     def url(self):
-        return 'http://{}:{}/{}'.format(IP, PORT, self.uuid)
+        return 'http://{}:{}/{}/'.format(IP, PORT, self.uuid)

@@ -23,3 +23,7 @@ class Group(models.Model):
             return '{} at {:%H:%M %d/%m/%Y}'.format(self.table, self.time)
         else:
             return 'Group at {:%H:%M %d/%m/%Y}'.format(self.table, self.time)
+
+    @property
+    def number(self):
+        return self.visitor_set.count()

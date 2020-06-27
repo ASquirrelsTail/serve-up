@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from visitors.views import CreateGroup
+
+table_urls = [
+    path('group/', CreateGroup.as_view(), name='group'),
+]
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('menu/', include('menu.urls')),
+    path('<slug:slug>/', include(table_urls)),
 ]
