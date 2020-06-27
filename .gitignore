@@ -4,3 +4,5 @@ __pycache__
 *.log
 *.pot
 *.pyc
+*.sublime-project
+*.sublime-workspace
