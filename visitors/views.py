@@ -1,11 +1,32 @@
 from django.views import View
 from django.http import JsonResponse
+from django.contrib.auth.mixins import AccessMixin
+from django.utils import timezone
+from datetime import timedelta
 import json
 from http import HTTPStatus
 
 from visitors.forms import VisitorForm
 from visitors.models import Group
 from tables.views import TableMixin
+
+
+class HasGroupMixin(AccessMixin):
+    permission_denied_message = 'Visitor information required before this action can be carried out.'
+    raise_exception = True
+
+    def dispatch(self, request, *args, **kwargs):
+        if 'group' not in request.session:
+            return self.handle_no_permission()
+
+        try:
+            group = Group.objects.get(pk=request.session['group'])
+        except Group.DoesNotExist:
+            return self.handle_no_permission()
+
+        if group.time < timezone.now() - timedelta(hours=2):
+            return self.handle_no_permission()
+        return super(HasGroupMixin, self).dispatch(request, *args, **kwargs)
 
 
 class CreateGroup(TableMixin, View):

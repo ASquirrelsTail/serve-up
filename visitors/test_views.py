@@ -1,7 +1,71 @@
 from django.urls import reverse
-from django.test import TestCase
+from django.views import View
+from django.http import HttpResponse
+from django.contrib.sessions.middleware import SessionMiddleware
+from django.test import TestCase, RequestFactory
+from django.core.exceptions import PermissionDenied
+from datetime import timedelta
+
 from tables.models import Table
 from visitors.models import Group
+from visitors.views import HasGroupMixin
+
+
+class HasGroupMixinTestCase(TestCase):
+    '''
+    Class to test HasGroupMixin.
+    '''
+    @classmethod
+    def setUpTestData(cls):
+        table = Table.objects.create(name='Test')
+        cls.group = Group.objects.create(table=table)
+        cls.old_group = Group.objects.create(table=table)
+        cls.old_group.time -= timedelta(days=2)
+        cls.old_group.save()
+
+    class TestView(HasGroupMixin, View):
+        '''
+        Simple test class using HasGroupMixin.
+        '''
+
+        def get(self, request):
+            return HttpResponse('Success')
+
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_returns_403_if_group_session_key_is_missing(self):
+        request = self.factory.get('')
+
+        middleware = SessionMiddleware()
+        middleware.process_request(request)
+        request.session.save()
+
+        with self.assertRaises(PermissionDenied):
+            self.TestView.as_view()(request)
+
+    def test_returns_403_if_group_is_older_than_2_hours(self):
+        request = self.factory.get('')
+
+        middleware = SessionMiddleware()
+        middleware.process_request(request)
+        request.session['group'] = self.old_group.id
+        request.session.save()
+
+        with self.assertRaises(PermissionDenied):
+            self.TestView.as_view()(request)
+
+    def test_returns_OK_if_user_has_valid_group(self):
+        request = self.factory.get('')
+
+        middleware = SessionMiddleware()
+        middleware.process_request(request)
+        request.session['group'] = self.group.id
+        request.session.save()
+
+        response = self.TestView.as_view()(request)
+
+        self.assertEqual(response.status_code, 200)
 
 
 class CreateGroupViewTestCase(TestCase):
