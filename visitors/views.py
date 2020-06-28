@@ -12,6 +12,9 @@ from tables.views import TableMixin
 
 
 class HasGroupMixin(AccessMixin):
+    '''
+    Checks if user has valid group in session, makes group available to view via self.group.
+    '''
     permission_denied_message = 'Visitor information required before this action can be carried out.'
     raise_exception = True
 
@@ -20,19 +23,17 @@ class HasGroupMixin(AccessMixin):
             return self.handle_no_permission()
 
         try:
-            group = Group.objects.get(pk=request.session['group'])
+            self.group = Group.objects.get(pk=request.session['group'])
         except Group.DoesNotExist:
             return self.handle_no_permission()
 
-        if group.time < timezone.now() - timedelta(hours=2):
+        two_hours_ago = timezone.now() - timedelta(hours=2)
+        if self.group.time < two_hours_ago and (not self.group.order_set.count() > 0 or self.group.order_set.latest('time').time < two_hours_ago):
             return self.handle_no_permission()
         return super(HasGroupMixin, self).dispatch(request, *args, **kwargs)
 
 
-class CreateGroup(TableMixin, View):
-    def get(self, request, **kawrgs):
-        return JsonResponse({'table': self.get_object().id})
-
+class GroupView(TableMixin, View):
     def post(self, request, **kwargs):
         '''
         Validates submitted visitor info and creates a group registering their visit in the database.
@@ -40,7 +41,7 @@ class CreateGroup(TableMixin, View):
         '''
         data = json.loads(request.body)
 
-        if 'visitors' not in data:
+        if 'visitors' not in data or not isinstance(data['visitors'], list) or len(data['visitors']) < 1:
             return JsonResponse({'error': 'Please enter details for at least one visitor!'},
                                 status=HTTPStatus.BAD_REQUEST)
 
@@ -68,7 +69,7 @@ class CreateGroup(TableMixin, View):
 
         # Create group and save each visitor to it
 
-        group = Group.objects.create(table=self.get_object())
+        group = Group.objects.create(table=self.get_table())
 
         for visitor_form in visitors:
             visitor = visitor_form.save(commit=False)

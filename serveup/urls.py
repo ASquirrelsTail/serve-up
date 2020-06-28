@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from visitors.views import CreateGroup
+from visitors.views import GroupView
+from orders.views import OrderView
 
 table_urls = [
-    path('group/', CreateGroup.as_view(), name='group'),
+    path('group/', GroupView.as_view(), name='group'),
+    path('order/', OrderView.as_view(), name='order'),
 ]
 
 urlpatterns = [

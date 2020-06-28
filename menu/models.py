@@ -15,7 +15,7 @@ class MenuModel(models.Model):
 class Item(MenuModel):
     price = models.DecimalField(default=0.00, max_digits=5, decimal_places=2, help_text='Including VAT if applicable.')
     vat = models.BooleanField(default=True)
-    section = models.ForeignKey('menu.Section', null=True, blank=True, default=True, on_delete=models.SET_NULL)
+    section = models.ForeignKey('menu.Section', null=True, blank=True, default=None, on_delete=models.SET_NULL)
 
     def __str__(self):
         return '{} - £{:.2f}'.format(self.name, self.price)
@@ -37,7 +37,7 @@ class Section(MenuModel):
 
         result = {'id': self.id,
                   'name': self.name,
-                  'description': self.description, 
+                  'description': self.description,
                   'order': self.order,
                   'items': items + sections}
 

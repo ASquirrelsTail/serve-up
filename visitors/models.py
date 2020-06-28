@@ -20,9 +20,9 @@ class Group(models.Model):
 
     def __str__(self):
         if self.table:
-            return '{} at {:%H:%M %d/%m/%Y}'.format(self.table, self.time)
+            return 'Group of {} at '.format(self.number, self.table)
         else:
-            return 'Group at {:%H:%M %d/%m/%Y}'.format(self.table, self.time)
+            return 'Group of {}'.format(self.number)
 
     @property
     def number(self):

@@ -7,6 +7,7 @@ from django.core.exceptions import PermissionDenied
 from datetime import timedelta
 
 from tables.models import Table
+from orders.models import Order
 from visitors.models import Group
 from visitors.views import HasGroupMixin
 
@@ -18,10 +19,27 @@ class HasGroupMixinTestCase(TestCase):
     @classmethod
     def setUpTestData(cls):
         table = Table.objects.create(name='Test')
-        cls.group = Group.objects.create(table=table)
+        cls.new_group = Group.objects.create(table=table)
+
+        cls.group_with_recent_order = Group.objects.create(table=table)
+        cls.group_with_recent_order.time -= timedelta(hours=3)
+        cls.group_with_recent_order.save()
+
+        prev_order = Order.objects.create(group=cls.group_with_recent_order)
+        prev_order.time -= timedelta(hours=1)
+        prev_order.save()
+
         cls.old_group = Group.objects.create(table=table)
         cls.old_group.time -= timedelta(days=2)
         cls.old_group.save()
+
+        cls.old_group_with_order = Group.objects.create(table=table)
+        cls.old_group_with_order.time -= timedelta(hours=5)
+        cls.old_group_with_order.save()
+
+        prev_order = Order.objects.create(group=cls.old_group_with_order)
+        prev_order.time -= timedelta(hours=3)
+        prev_order.save()
 
     class TestView(HasGroupMixin, View):
         '''
@@ -44,7 +62,7 @@ class HasGroupMixinTestCase(TestCase):
         with self.assertRaises(PermissionDenied):
             self.TestView.as_view()(request)
 
-    def test_returns_403_if_group_is_older_than_2_hours(self):
+    def test_returns_403_if_group_is_older_than_2_hours_without_an_order_within_2_hours(self):
         request = self.factory.get('')
 
         middleware = SessionMiddleware()
@@ -55,12 +73,25 @@ class HasGroupMixinTestCase(TestCase):
         with self.assertRaises(PermissionDenied):
             self.TestView.as_view()(request)
 
+        request.session['group'] = self.old_group_with_order.id
+        request.session.save()
+
+        with self.assertRaises(PermissionDenied):
+            self.TestView.as_view()(request)
+
     def test_returns_OK_if_user_has_valid_group(self):
         request = self.factory.get('')
 
         middleware = SessionMiddleware()
         middleware.process_request(request)
-        request.session['group'] = self.group.id
+        request.session['group'] = self.new_group.id
+        request.session.save()
+
+        response = self.TestView.as_view()(request)
+
+        self.assertEqual(response.status_code, 200)
+
+        request.session['group'] = self.group_with_recent_order.id
         request.session.save()
 
         response = self.TestView.as_view()(request)
@@ -100,6 +131,7 @@ class CreateGroupViewTestCase(TestCase):
         Creating a group should fail if invalid data submitted, return 400 response, and not create a group or add one to the session.
         '''
         invalid_data = [
+            {'visitors': 'Not a list!'},
             {'visitors': []},
             {'visitors': [{'name': '', 'phone_number': '', 'email': ''}]},
             {'visitors': [{'name': 'John Doe', 'phone_number': '', 'email': 'johndoe.com'}]},
