@@ -57,13 +57,13 @@ class GroupView(TableMixin, View):
             else:
                 valid = False
 
-        valid = valid * contact_details
-
-        if not valid:
+        if not valid or not contact_details:
             response_data = {'error': 'Please correct errors with visitor details',
                              'form_errors': [visitor_form.errors for visitor_form in visitors]}
-            if not contact_details:
-                response_data['error'] = 'Contact details are required for at least one member of the group.'
+            if valid and not contact_details:
+                response_data['error'] = 'Valid contact details are required for at least one member of the group.'
+                response_data['form_errors'][0]['email'] = 'A valid email or phone number is required.'
+                response_data['form_errors'][0]['phone_number'] = 'A valid phone number or email is required.'
 
             return JsonResponse(response_data, status=HTTPStatus.BAD_REQUEST)
 
