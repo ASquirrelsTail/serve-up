@@ -22,26 +22,23 @@ class Item(MenuModel):
 
 
 class Section(MenuModel):
-    parent_section = models.ForeignKey('self', null=True, blank=True, default=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.name
 
-    def serialize(self, logged_in=False):
-        if logged_in:
-            items = list(self.item_set.values('id', 'name', 'description', 'price', 'vat', 'order', 'visible'))
-            sections = [section.serialize(logged_in) for section in self.section_set.all()]
+    def serialize(self, show_hidden=False):
+        if not show_hidden:
+            items = self.item_set.filter(visible=True).values('id', 'name', 'description', 'price', 'vat', 'order', 'visible')
         else:
-            items = list(self.item_set.exclude(visible=False).values('id', 'name', 'description', 'price', 'vat', 'order'))
-            sections = [section.serialize(logged_in) for section in self.section_set.exclude(visible=False)]
+            items = self.item_set.values('id', 'name', 'description', 'price', 'vat', 'order')
 
         result = {'id': self.id,
                   'name': self.name,
                   'description': self.description,
                   'order': self.order,
-                  'items': items + sections}
+                  'items': list(items)}
 
-        if logged_in:
+        if show_hidden:
             result['visible'] = self.visible
 
         return result

@@ -1,5 +1,6 @@
 <script>
   import Visitor from './Visitor.svelte';
+  import { post } from '../fetch.js';
   import { group } from '../store.js';
 
   let visitors = [];
@@ -19,23 +20,16 @@
   function checkIn() {
     disabled = true;
     visitors = [visitors[0], ...visitors.slice(1).filter(visitor => visitor.name || visitor.email || visitor.phone_number)];
-    fetch('group/', {
-      method: 'POST',
-      credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
-      },
-      body: JSON.stringify({visitors}) // body data type must match "Content-Type" header
-    }).then(async response => {
-      if (response.status === 204) $group = true;
-      else {
-        const data = await response.json();
-        error = data.error;
-        errors = data.form_errors;
-        errorMessage.scrollIntoView();
-        disabled = false;
-      }
+    post('group/', {visitors})
+      .then(async response => {
+        if (response.status === 204) $group = true;
+        else {
+          const data = await response.json();
+          error = data.error;
+          errors = data.form_errors;
+          errorMessage.scrollIntoView();
+          disabled = false;
+        }
     });
   }
 </script>

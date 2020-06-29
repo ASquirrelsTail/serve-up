@@ -1,9 +1,12 @@
 <script>
   import SignIn from './checkin/CheckIn.svelte';
+  import Menu from './menu/Menu.svelte';
   import { group } from './store.js';
 </script>
+<main>
 {#if $group}
-<p>We have a group.</p>
+<Menu />
 {:else}
 <SignIn />
 {/if}
+</main>
