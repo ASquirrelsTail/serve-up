@@ -1,10 +1,13 @@
 <script>
   import SignIn from './checkin/CheckIn.svelte';
   import Menu from './menu/Menu.svelte';
-  import { group } from './store.js';
+  import Dashboard from './dashboard/Dashboard.svelte';
+  import { group, user } from './store.js';
 </script>
 <main>
-{#if $group}
+{#if $user}
+<Dashboard />
+{:else if $group}
 <Menu />
 {:else}
 <SignIn />

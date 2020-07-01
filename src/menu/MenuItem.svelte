@@ -42,7 +42,7 @@
     <div class="price">£{price} ea.</div>
     <div class="count">
       <button class="minus" on:click={remove}>-</button>
-      <input type="number" min=0 bind:value={count} on:change={update}>
+      <input type="number" min=0 bind:value={count} on:input={update}>
       <button class="plus" on:click={add}>+</button>
     </div>
   </div>

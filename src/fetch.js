@@ -1,7 +1,6 @@
-function post(endpoint, data) {
-  console.log(data);
+function request(endpoint, method, data) {
   return fetch(endpoint, {
-      method: 'POST',
+      method: method,
       credentials: 'same-origin',
       headers: {
         'Content-Type': 'application/json',
@@ -11,4 +10,13 @@ function post(endpoint, data) {
     })
 }
 
-export { post }
+
+function post(endpoint, data) {
+  return request(endpoint, 'POST', data);
+}
+
+function patch(endpoint, data) {
+  return request(endpoint, 'PATCH', data);
+}
+
+export { post, patch }

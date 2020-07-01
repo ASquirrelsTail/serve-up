@@ -20,7 +20,7 @@ class Group(models.Model):
 
     def __str__(self):
         if self.table:
-            return 'Group of {} at '.format(self.number, self.table)
+            return 'Group of {} at {}'.format(self.number, self.table)
         else:
             return 'Group of {}'.format(self.number)
 

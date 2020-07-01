@@ -9,7 +9,8 @@
   <script src="{% static 'build/bundle.js' %}" defer></script>
   <title>Serve Up</title>
 </head>
-<body {% if request.session.group %}data-group="{{request.session.group}}"{% endif %}>
+<body {% if request.session.group %}data-group="{{request.session.group}}"{% endif %}
+      {% if request.user %}data-user="{{request.user.username}}"{% endif %}>
   {% csrf_token %}
 </body>
 </html>

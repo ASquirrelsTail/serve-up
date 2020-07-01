@@ -17,16 +17,23 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.generic.base import TemplateView
 from visitors.views import GroupView
-from orders.views import OrderView
+from orders.views import TableOrderView, DailyOrdersView, DashboardView, OrderView
 
 table_urls = [
     path('group/', GroupView.as_view(), name='group'),
-    path('order/', OrderView.as_view(), name='order'),
+    path('order/', TableOrderView.as_view(), name='table-order'),
     path('', TemplateView.as_view(template_name='index.html'), name='table')
+]
+
+orders_urls = [
+    path('', DailyOrdersView.as_view(), name='orders'),
+    path('<int:pk>/', OrderView.as_view(), name='order'),
 ]
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('menu/', include('menu.urls')),
+    path('dashboard/', DashboardView.as_view(), name='dashboard'),
+    path('orders/', include(orders_urls)),
     path('<slug:slug>/', include(table_urls)),
 ]
