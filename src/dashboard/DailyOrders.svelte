@@ -54,22 +54,22 @@
   {:then orders}
   <div class="order-list">
     <h3>Pending</h3>
-    <p>These orders haven't been sarted yet</p>
+    <p class="details">These orders haven't been sarted yet</p>
     <OrderList orders="{orders.filter(order => !order.accepted)}" on:editorder={editOrder}/>
   </div>
   <div class="order-list">
     <h3>Accepted</h3>
-    <p>These orders are being worked on</p>
+    <p class="details">These orders are being worked on</p>
     <OrderList orders="{orders.filter(order => order.accepted && !order.completed)}" on:editorder={editOrder}/>
   </div>
   <div class="order-list">
     <h3>Completed</h3>
-    <p>These orders have been served, but not paid</p>
+    <p class="details">These orders have been served, but not paid</p>
     <OrderList orders="{orders.filter(order => order.completed && !order.paid)}" on:editorder={editOrder}/>
   </div>
   <div class="order-list">
     <h3>Paid</h3>
-    <p>These orders have been completed and paid</p>
+    <p class="details">These orders have been completed and paid</p>
     <OrderList orders="{orders.filter(order => order.completed && order.paid)}" on:editorder={editOrder}/>
   </div>
   {:catch error}
@@ -81,24 +81,39 @@
 <div class="cover" transition:fade on:click="{() => review = false}"></div>
 <div class="review" transition:slide>
   <div class="inner">
+    <div>
     <OrderReview order={review} />
     <div class="buttons">
       {#if !review.accepted}
-      <button disabled={sending} on:click="{() => sendUpdateOrder('accepted')}">Accepted</button>
+      <button class="primary md" disabled={sending} on:click="{() => sendUpdateOrder('accepted')}">Accepted</button>
       {:else if !review.completed}
-      <button disabled={sending} on:click="{() => sendUpdateOrder('completed')}">Completed</button>
+      <button class="primary md" disabled={sending} on:click="{() => sendUpdateOrder('completed')}">Completed</button>
       {/if}
       {#if !review.paid}
-      <button disabled={sending} on:click="{() => sendUpdateOrder('paid')}">Paid</button>
+      <button class="primary md" disabled={sending} on:click="{() => sendUpdateOrder('paid')}">Paid</button>
       {/if}
     </div>
-    <button on:click="{() => review = false}">Back to orders</button>
+    </div>
+    <div class="back">
+      <button class="secondary md" on:click="{() => review = false}">Back to orders</button>
+    </div>
   </div>
   
 </div>
 {/if}
 
 <style>
+  .details {
+    font-size: 0.8em;
+    margin: 0.2em;
+  }
+
+  .order-list {
+    margin: 0.2em;
+    border: 1px solid grey;
+    border-radius: 0.2em;
+  }
+
   .review {
     height: 70vh;
     position: fixed;
@@ -112,14 +127,29 @@
     padding-bottom: 0.4em;
   }
 
+  .back {
+    display: flex;
+    align-items: baseline;
+    text-align: center;
+  }
+
+  .back button {
+    margin: auto;
+  }
+
   .inner {
+    height:100%;
     max-width: 600px;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .buttons {
     display: flex;
     justify-content: center;
+    margin: 0.2em;
   }
 
   .buttons button {
@@ -128,15 +158,6 @@
 
   .buttons button:first-child {
     margin-right: 1em;
-  }
-
-  .cover {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
   }
 </style>
 

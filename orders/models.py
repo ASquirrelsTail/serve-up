@@ -15,7 +15,7 @@ class Order(models.Model):
     def __str__(self):
         return '{} - {} items - £{:.2f}{}'.format(self.group,
                                                   self.no_items,
-                                                  self.total,
+                                                  float(self.total),
                                                   ' - PAID' if self.paid else '')
 
     @property

@@ -57,22 +57,15 @@
 
   input {
     min-width: 75%;
-    font-size: 1.1em;
   }
 
   .error {
     display: none;
-    font-size: 0.8em;
     text-align: right;
-    color: red;
   }
 
   .invalid .error {
     display: block;
     width: 100%;
-  }
-
-  .invalid input {
-    border: 1px solid red;
   }
 </style>

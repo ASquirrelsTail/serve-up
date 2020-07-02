@@ -50,27 +50,28 @@
         <h3>{items} Items - £{total.toFixed(2)}</h3>
       </div>
       {#if !review}
-      <button on:click="{() => review = true}">
+      <button class="primary md" on:click="{() => review = true}">
         Review and place order
       </button>
       {/if}
     </nav>
+    {#if review}
     <div>
-      {#if review}
       {#each $orderList as item (item.id)}
       <OrderItem {...item} />
       {:else}
       <p>Add something to your order to continue.</p>
       {/each}
       <div class="buttons">
-        <button on:click="{() => review = true}" disabled="{!$orderList.length || ordering}" on:click={placeOrder}>
+        <button class="primary md" on:click="{() => review = true}" disabled="{!$orderList.length || ordering}" on:click={placeOrder}>
           Place Order
-        </button><button on:click="{() => review = false}">
+        </button>
+        <button class="secondary md" on:click="{() => review = false}">
           Back to Menu
         </button>
       </div>
-      {/if}
     </div>
+    {/if}
   </div>
 </div>
 
@@ -81,7 +82,8 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    transition: height;
+    max-height: 20vh;
+    transition: max-height 0.5s ease-out;
     overflow-y: auto;
     background-color: white;
     border-top: 1px solid grey;
@@ -90,6 +92,7 @@
   }
 
   .review {
+    max-height: 70vh;
     height: 70vh;
   }
 
@@ -99,6 +102,7 @@
   }
 
   .buttons {
+    margin-top: 0.3em;
     display: flex;
     justify-content: center;
   }
@@ -109,14 +113,5 @@
 
   .buttons button:first-child {
     margin-right: 1em;
-  }
-
-  .cover {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
   }
 </style>

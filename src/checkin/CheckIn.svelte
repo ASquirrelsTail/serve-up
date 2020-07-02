@@ -45,8 +45,8 @@
     {disabled}/>
 {/each}
 <div class="buttons">
-  <button on:click|preventDefault={addVisitor} {disabled}>Add another visitor</button>
-  <button on:click|preventDefault={checkIn} {disabled}>Check In</button>
+  <button class="primary md" on:click|preventDefault={addVisitor} {disabled}>Add another visitor</button>
+  <button class="primary md" on:click|preventDefault={checkIn} {disabled}>Check In</button>
 </div>
 
 <style>
@@ -65,8 +65,6 @@
 
   .error {
     display: none;
-    font-size: 0.8em;
-    color: red;
   }
 
   .error.visible {

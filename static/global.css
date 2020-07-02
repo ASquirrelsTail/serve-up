@@ -3,6 +3,7 @@ body {
 	padding: 0;
 	box-sizing: border-box;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	background-color: white;
 }
 
 h1 {
@@ -23,15 +24,91 @@ main {
 	text-align: center;
 }
 
+input {
+	font-size: 1.1em;
+}
+
+.invalid input {
+	border: 1px solid red;
+}
+
+.error {
+	font-size: 0.8em;
+	color: red;
+}
+
+.cover {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+}
+
 .description {
 	margin: 0.2em 0;
 }
 
-.menu-item:nth-child(even), .order-item:nth-child(even) {
-	background-color: silver;
+.menu-item:nth-child(even), .order-item:nth-child(even), .reciept-list .item-row:nth-child(odd), .order-list .order:nth-child(odd) {
+	background-color: #D8DBE2;
+}
+
+.reciept-list, .reciept-totals {
+	border-bottom: 1px solid silver;
 }
 
 .count input {
 	width: 2em;
 	text-align: center;
 }
+
+@media only screen and (min-width: 1025px) {
+	.count input {
+		width: 3em;
+		padding-left: 1em;
+	}
+}
+
+button {
+	border: none;
+	border-radius: 0.2em;
+	color: white;
+	font-weight: bold;
+}
+
+button.minus, button.plus {
+	width: 1em;
+	height: 1em;
+	line-height: 0;
+	font-size: 1.5em;
+	vertical-align: middle;
+	margin-bottom: 0.1em;
+}
+
+button.minus {
+	padding-bottom: 0.1em;
+}
+
+button.plus, button.primary {
+	background-color: #00A0AF;
+}
+
+button.minus, button.danger {
+	background-color: #F16022;
+}
+
+button.secondary {
+	background-color: #F16022;
+}
+
+button:disabled {
+	background-color: #B1B1B1;
+	border: 1px solid #373F51;
+}
+
+button.md {
+	padding: 0.4em 0.6em;
+	font-size: 1em;
+}
+

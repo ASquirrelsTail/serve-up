@@ -1,4 +1,5 @@
 <script>
+  import Count from '../Count.svelte'
   import { orderList } from '../store.js';
   export let name = 'Menu Item';
   export let description = false;
@@ -16,35 +17,23 @@
     else count = 0;
   }
 
-  function update() {
+  function update(e) {
+    count = e.detail;
     orderList.addOrUpdate({id, name, price, vat, count});
   }
 
-  function add() {
-    count++;
-    update();
-  }
-
-  function remove() {
-    count =  Math.max(count - 1, 0);
-    update();
-  }
 </script>
 
 <div class="menu-item">
   <div class="details">
-    <h3 class="name">{name}</h3>
+    <h3 class="name"><label for="menu-count-{id}">{name}</label></h3>
     {#if description}
     <p class="description">{description}</p>
     {/if}
   </div>
   <div class="order">
     <div class="price">£{price} ea.</div>
-    <div class="count">
-      <button class="minus" on:click={remove}>-</button>
-      <input type="number" min=0 bind:value={count} on:input={update}>
-      <button class="plus" on:click={add}>+</button>
-    </div>
+    <Count {count} id="menu-count-{id}" on:count={update}/>
   </div>
 </div>
 
@@ -60,15 +49,13 @@
     margin-top: 0;
   }
 
+  .order {
+    flex-shrink: 0;
+  }
+
   .price {
     text-align: center;
     font-weight: bold;
   }
-
-  .count input {
-    width: 2em;
-    text-align: center;
-  }
-
 </style>
 

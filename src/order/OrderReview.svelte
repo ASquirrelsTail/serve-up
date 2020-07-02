@@ -60,13 +60,4 @@
     text-align: right;
   }
 
-  .reciept-list .item-row:nth-child(odd) {
-    background-color: silver;
-  }
-
-  .reciept-list, .reciept-totals {
-    border-bottom: 1px solid silver;
-  }
-
-
 </style>
