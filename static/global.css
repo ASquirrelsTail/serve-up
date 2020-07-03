@@ -50,7 +50,7 @@ input {
 	margin: 0.2em 0;
 }
 
-.menu-item:nth-child(even), .order-item:nth-child(even), .reciept-list .item-row:nth-child(odd), .order-list .order:nth-child(odd) {
+.menu-item:nth-child(even), .order-item:nth-child(even), .reciept-list .item-row:nth-child(odd), .order-list .order:nth-child(odd), .striped:nth-child(odd) {
 	background-color: #D8DBE2;
 }
 
@@ -71,6 +71,7 @@ input {
 }
 
 button {
+	box-sizing: border-box;
 	border: none;
 	border-radius: 0.2em;
 	color: white;

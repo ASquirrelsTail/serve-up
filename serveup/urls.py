@@ -18,6 +18,7 @@ from django.urls import include, path
 from django.views.generic.base import TemplateView
 from visitors.views import GroupView
 from orders.views import TableOrderView, DailyOrdersView, DashboardView, OrderView
+from tables.views import TablesView, TableEditView
 
 table_urls = [
     path('group/', GroupView.as_view(), name='group'),
@@ -30,10 +31,16 @@ orders_urls = [
     path('<int:pk>/', OrderView.as_view(), name='order'),
 ]
 
+tables_urls = [
+    path('', TablesView.as_view(), name='tables'),
+    path('<int:pk>/', TableEditView.as_view(), name='table-edit'),
+]
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('menu/', include('menu.urls')),
     path('dashboard/', DashboardView.as_view(), name='dashboard'),
     path('orders/', include(orders_urls)),
+    path('tables/', include(tables_urls)),
     path('<slug:slug>/', include(table_urls)),
 ]

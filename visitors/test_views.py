@@ -41,6 +41,11 @@ class HasGroupMixinTestCase(TestCase):
         prev_order.time -= timedelta(hours=3)
         prev_order.save()
 
+    @classmethod
+    def tearDownClass(cls):
+        Table.objects.all().delete()
+        super(HasGroupMixinTestCase, cls).tearDownClass()
+
     class TestView(HasGroupMixin, View):
         '''
         Simple test class using HasGroupMixin.
@@ -108,6 +113,11 @@ class CreateGroupViewTestCase(TestCase):
     def setUpTestData(cls):
         table = Table.objects.create(name='Test')
         cls.url = reverse('group', kwargs={'slug': table.uuid})
+
+    @classmethod
+    def tearDownClass(cls):
+        Table.objects.all().delete()
+        super(CreateGroupViewTestCase, cls).tearDownClass()
 
     def setUp(self):
         self.client.session.clear()

@@ -1,8 +1,8 @@
 <script>
-  import { fade, slide } from 'svelte/transition';
+  import Review from '../Review.svelte';
   import OrderList from './OrderList.svelte';
   import OrderReview from '../order/OrderReview.svelte';
-  import { patch } from '../fetch.js'
+  import { patch, toData } from '../fetch.js'
 
   let review = false;
   let sending = false;
@@ -10,9 +10,7 @@
 
 
   let todaysOrders = fetch('/orders/')
-                    .then(response => {
-    if (response.status === 200) return response.json();
-    else if (response.status === 403) window.location.replace('/admin/login/?next=/dashboard/')})
+                    .then(toData)
                     .then(data => data.orders);
 
   $: {
@@ -77,30 +75,26 @@
   {/await}
 </div>
 
-{#if review}
-<div class="cover" transition:fade on:click="{() => review = false}"></div>
-<div class="review" transition:slide>
+<Review bind:review={review}>
   <div class="inner">
     <div>
-    <OrderReview order={review} />
-    <div class="buttons">
-      {#if !review.accepted}
-      <button class="primary md" disabled={sending} on:click="{() => sendUpdateOrder('accepted')}">Accepted</button>
-      {:else if !review.completed}
-      <button class="primary md" disabled={sending} on:click="{() => sendUpdateOrder('completed')}">Completed</button>
-      {/if}
-      {#if !review.paid}
-      <button class="primary md" disabled={sending} on:click="{() => sendUpdateOrder('paid')}">Paid</button>
-      {/if}
-    </div>
+      <OrderReview order={review} />
+      <div class="buttons">
+        {#if !review.accepted}
+        <button class="primary md" disabled={sending} on:click="{() => sendUpdateOrder('accepted')}">Accepted</button>
+        {:else if !review.completed}
+        <button class="primary md" disabled={sending} on:click="{() => sendUpdateOrder('completed')}">Completed</button>
+        {/if}
+        {#if !review.paid}
+        <button class="primary md" disabled={sending} on:click="{() => sendUpdateOrder('paid')}">Paid</button>
+        {/if}
+      </div>
     </div>
     <div class="back">
       <button class="secondary md" on:click="{() => review = false}">Back to orders</button>
     </div>
   </div>
-  
-</div>
-{/if}
+</Review>
 
 <style>
   .details {

@@ -21,6 +21,11 @@ class TableOrderViewTestCase(TestCase):
         menu_item_names = ['Bacon', 'Eggs', 'Toast', 'Coffee']
         cls.menu_items = [Item.objects.create(name=name) for name in menu_item_names]
 
+    @classmethod
+    def tearDownClass(cls):
+        Table.objects.all().delete()
+        super(TableOrderViewTestCase, cls).tearDownClass()
+
     def setUp(self):
         self.client.session.clear()
 
@@ -88,6 +93,11 @@ class UpdateOrderViewTestCase(TestCase):
 
         table = Table.objects.create(name='Test')
         cls.group = Group.objects.create(table=table)
+
+    @classmethod
+    def tearDownClass(cls):
+        Table.objects.all().delete()
+        super(UpdateOrderViewTestCase, cls).tearDownClass()
 
     def setUp(self):
         self.client.logout()

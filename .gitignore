@@ -7,3 +7,4 @@ __pycache__
 *.pyc
 *.sublime-project
 *.sublime-workspace
+/static/qrcodes/*.png
