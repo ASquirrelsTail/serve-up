@@ -1,11 +1,16 @@
 <script>
   import { createEventDispatcher, onMount } from 'svelte';
+  import { post, patch, del, toData } from '../fetch.js';
   import Switch from '../Switch.svelte'
   export let section = {};
 
+  const dispatch = createEventDispatcher();
+
   let name, description, visible;
   let error = false;
+  let errors = {};
   let sending = false;
+
   onMount(() => {
     if (!section.id){
       name = '';
@@ -17,15 +22,58 @@
   })
 
   function add() {
-
+    sending = true;
+    post('/menu/sections/', {name, description, visible}).then(response => {
+      if (response.status === 200 || response.status === 400) return response.json();
+      if (response.status === 403) {
+        error = 'You are not allowed to add new sections';
+        sending = false;
+      }
+    }).then(data => {
+      if (data.error) {
+        error = data.error;
+        errors = data.errors;
+      }
+      else {
+        dispatch('update', {'section': data});
+        section = data;
+        ({name, description, visible} = data);
+      }
+      sending = false;
+    });
   }
 
   function update() {
-
+    sending = true;
+    patch('/menu/sections/' + section.id + '/', {name, description, visible}).then(response => {
+      if (response.status === 200 || response.status === 400) return response.json();
+      if (response.status === 403) error = 'You are not allowed to update sections.';
+      if (response.status === 404) error = 'Section not found.';
+      sending = false;
+    }).then(data => {
+      if (data) {
+        if (data.error) {
+          error = data.error;
+          errors = data.errors;
+        }
+        else {
+          dispatch('update', {'section': data});
+          section = data;
+          ({name, description, visible} = data);
+        }
+      }
+      sending = false;
+    });
   }
 
   function delSection() {
-
+    sending = true;
+    del('/menu/sections/' + section.id + '/').then(response => {
+      if (response.status === 204) dispatch('delete', {section: {id: section.id}});
+      if (response.status === 403) error = 'You are not allowed to delete sections.'
+      if (response.status === 404) error = 'Section not found.';
+      sending = false;
+    });
   }
 </script>
 

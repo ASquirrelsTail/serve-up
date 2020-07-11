@@ -34,7 +34,7 @@
     sending = true;
     patch('/tables/' + table.id + '/', {name: table.name}).then(response => {
       if (response.status === 200 || response.status === 400) return response.json();
-      if (response.status === 403) error = 'You are not allowed to add new tables.';
+      if (response.status === 403) error = 'You are not allowed to update tables.';
       if (response.status === 404) error = 'Table not found.';
       sending = false;
     }).then(data => {

@@ -1,26 +1,28 @@
 <script>
   import { createEventDispatcher } from 'svelte';
   export let item = {};
+  export let first = false;
+  export let last = false;
 
   const dispatch = createEventDispatcher();
 </script>
 
 <div class="striped" class:hidden={!item.visible}>
   <div class="details">
-    <h4 class="name">{item.name}</h4>
+    <h4 class="name">{item.name} - {item.id}</h4>
     {#if item.description}
     <p class="description">{item.description}</p>
     {/if}
   </div>
   <div class="price">
-    {item.price}
+    £{Number.parseFloat(item.price).toFixed(2)}
   </div>
   <div>
     <button class="primary md" on:click="{() => dispatch('edititem', item)}">Edit</button>
   </div>
   <div class="up-down">
-    <button class="primary">+</button>
-    <button class="primary">-</button>
+    <button class="primary" on:click="{() => dispatch('moveup')}" disabled={first}>+</button>
+    <button class="primary" on:click="{() => dispatch('movedown')}" disabled={last}>-</button>
   </div>
 </div>
 

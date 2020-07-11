@@ -24,8 +24,20 @@ main {
 	text-align: center;
 }
 
-input {
+.section {
+	margin: 0.2em;
+  border: 1px solid grey;
+  border-radius: 0.2em;
+}
+
+.hidden {
+	color: rgba(0, 0, 0, 0.5);
+}
+
+input, textarea {
 	font-size: 1.1em;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	box-sizing: border-box;
 }
 
 .invalid input {

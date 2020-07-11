@@ -1,7 +1,11 @@
 <script>
   import { createEventDispatcher, onMount } from 'svelte';
   import Switch from '../Switch.svelte'
+  import { post, patch, del, toData } from '../fetch.js';
   export let item = {};
+  export let section = false;
+
+  const dispatch = createEventDispatcher();
 
   let name, description, price, vat, visible;
   let error = false;
@@ -10,7 +14,7 @@
     if (!item.id){
       name = '';
       description = '';
-      price = 0;
+      price = '0.00';
       vat = true;
       visible = true;
     } else {
@@ -19,15 +23,59 @@
   })
 
   function add() {
-
+    sending = true;
+    post('/menu/items/', {name, description, price, vat, visible, section: section.id}).then(response => {
+      if (response.status === 200 || response.status === 400) return response.json();
+      if (response.status === 403) {
+        error = 'You are not allowed to add new items';
+        sending = false;
+      }
+    }).then(data => {
+      if (data.error) {
+        error = data.error;
+        errors = data.errors;
+      }
+      else {
+        data.sectionId = section.id;
+        dispatch('update', {'item': data});
+        item = data;
+        ({name, description, price, vat, visible} = data);
+      }
+      sending = false;
+    });
   }
 
   function update() {
-
+    patch('/menu/items/' + item.id + '/', {name, description, price, vat, visible}).then(response => {
+      if (response.status === 200 || response.status === 400) return response.json();
+      if (response.status === 403) error = 'You are not allowed to update items.';
+      if (response.status === 404) error = 'Item not found.';
+      sending = false;
+    }).then(data => {
+      if (data) {
+        if (data.error) {
+          error = data.error;
+          errors = data.errors;
+        }
+        else {
+          data.sectionId = section.id;
+          dispatch('update', {'item': data});
+          item = data;
+          ({name, description, price, vat, visible} = data);
+        }
+      }
+      sending = false;
+    });
   }
 
   function delSection() {
-
+    sending = true;
+    del('/menu/items/' + item.id + '/').then(response => {
+      if (response.status === 204) dispatch('delete', {item: {id: item.id, sectionId: section.id}});
+      if (response.status === 403) error = 'You are not allowed to delete items.'
+      if (response.status === 404) error = 'Item not found.';
+      sending = false;
+    });
   }
 </script>
 

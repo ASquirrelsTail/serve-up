@@ -26,7 +26,7 @@
 </script>
 
 <h2>Tables</h2>
-<div>
+<div class="section">
   {#await allTables then tables}
     {#each tables as table (table.id)}
       <div class="table striped">
