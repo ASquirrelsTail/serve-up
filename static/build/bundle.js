@@ -4974,7 +4974,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Oops something went wrong when trying to load today's orders!";
-    			add_location(p, file$b, 73, 2, 2268);
+    			add_location(p, file$b, 73, 2, 2256);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -5100,26 +5100,26 @@ var app = (function () {
     			p3.textContent = "These orders have been completed and paid";
     			t18 = space();
     			create_component(orderlist3.$$.fragment);
-    			add_location(h30, file$b, 53, 4, 1368);
-    			attr_dev(p0, "class", "details svelte-j2tosj");
-    			add_location(p0, file$b, 54, 4, 1389);
-    			attr_dev(div0, "class", "order-list svelte-j2tosj");
+    			add_location(h30, file$b, 53, 4, 1365);
+    			attr_dev(p0, "class", "details svelte-1iwfgnh");
+    			add_location(p0, file$b, 54, 4, 1386);
+    			attr_dev(div0, "class", "section");
     			add_location(div0, file$b, 52, 2, 1339);
-    			add_location(h31, file$b, 58, 4, 1582);
-    			attr_dev(p1, "class", "details svelte-j2tosj");
-    			add_location(p1, file$b, 59, 4, 1604);
-    			attr_dev(div1, "class", "order-list svelte-j2tosj");
-    			add_location(div1, file$b, 57, 2, 1553);
-    			add_location(h32, file$b, 63, 4, 1812);
-    			attr_dev(p2, "class", "details svelte-j2tosj");
-    			add_location(p2, file$b, 64, 4, 1835);
-    			attr_dev(div2, "class", "order-list svelte-j2tosj");
-    			add_location(div2, file$b, 62, 2, 1783);
-    			add_location(h33, file$b, 68, 4, 2050);
-    			attr_dev(p3, "class", "details svelte-j2tosj");
-    			add_location(p3, file$b, 69, 4, 2068);
-    			attr_dev(div3, "class", "order-list svelte-j2tosj");
-    			add_location(div3, file$b, 67, 2, 2021);
+    			add_location(h31, file$b, 58, 4, 1576);
+    			attr_dev(p1, "class", "details svelte-1iwfgnh");
+    			add_location(p1, file$b, 59, 4, 1598);
+    			attr_dev(div1, "class", "section");
+    			add_location(div1, file$b, 57, 2, 1550);
+    			add_location(h32, file$b, 63, 4, 1803);
+    			attr_dev(p2, "class", "details svelte-1iwfgnh");
+    			add_location(p2, file$b, 64, 4, 1826);
+    			attr_dev(div2, "class", "section");
+    			add_location(div2, file$b, 62, 2, 1777);
+    			add_location(h33, file$b, 68, 4, 2038);
+    			attr_dev(p3, "class", "details svelte-1iwfgnh");
+    			add_location(p3, file$b, 69, 4, 2056);
+    			attr_dev(div3, "class", "section");
+    			add_location(div3, file$b, 67, 2, 2012);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -5249,9 +5249,9 @@ var app = (function () {
     		c: function create() {
     			button = element("button");
     			t = text("Completed");
-    			attr_dev(button, "class", "primary md svelte-j2tosj");
+    			attr_dev(button, "class", "primary md svelte-1iwfgnh");
     			button.disabled = /*sending*/ ctx[1];
-    			add_location(button, file$b, 85, 8, 2678);
+    			add_location(button, file$b, 85, 8, 2666);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
@@ -5296,9 +5296,9 @@ var app = (function () {
     		c: function create() {
     			button = element("button");
     			t = text("Accepted");
-    			attr_dev(button, "class", "primary md svelte-j2tosj");
+    			attr_dev(button, "class", "primary md svelte-1iwfgnh");
     			button.disabled = /*sending*/ ctx[1];
-    			add_location(button, file$b, 83, 8, 2522);
+    			add_location(button, file$b, 83, 8, 2510);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
@@ -5343,9 +5343,9 @@ var app = (function () {
     		c: function create() {
     			button = element("button");
     			t = text("Paid");
-    			attr_dev(button, "class", "primary md svelte-j2tosj");
+    			attr_dev(button, "class", "primary md svelte-1iwfgnh");
     			button.disabled = /*sending*/ ctx[1];
-    			add_location(button, file$b, 88, 8, 2840);
+    			add_location(button, file$b, 88, 8, 2828);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
@@ -5422,15 +5422,15 @@ var app = (function () {
     			div2 = element("div");
     			button = element("button");
     			button.textContent = "Back to orders";
-    			attr_dev(div0, "class", "buttons svelte-j2tosj");
-    			add_location(div0, file$b, 81, 6, 2461);
-    			add_location(div1, file$b, 79, 4, 2412);
-    			attr_dev(button, "class", "secondary md svelte-j2tosj");
-    			add_location(button, file$b, 93, 6, 3010);
-    			attr_dev(div2, "class", "back svelte-j2tosj");
-    			add_location(div2, file$b, 92, 4, 2985);
-    			attr_dev(div3, "class", "inner svelte-j2tosj");
-    			add_location(div3, file$b, 78, 2, 2388);
+    			attr_dev(div0, "class", "buttons svelte-1iwfgnh");
+    			add_location(div0, file$b, 81, 6, 2449);
+    			add_location(div1, file$b, 79, 4, 2400);
+    			attr_dev(button, "class", "secondary md svelte-1iwfgnh");
+    			add_location(button, file$b, 93, 6, 2998);
+    			attr_dev(div2, "class", "back svelte-1iwfgnh");
+    			add_location(div2, file$b, 92, 4, 2973);
+    			attr_dev(div3, "class", "inner svelte-1iwfgnh");
+    			add_location(div3, file$b, 78, 2, 2376);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div3, anchor);
@@ -6840,7 +6840,7 @@ var app = (function () {
     		c: function create() {
     			h3 = element("h3");
     			t = text(t_value);
-    			attr_dev(h3, "class", "svelte-1ydfl40");
+    			attr_dev(h3, "class", "svelte-r4hfmv");
     			add_location(h3, file$f, 83, 2, 2313);
     		},
     		m: function mount(target, anchor) {
@@ -6874,7 +6874,7 @@ var app = (function () {
     		c: function create() {
     			h3 = element("h3");
     			h3.textContent = "New Section";
-    			attr_dev(h3, "class", "svelte-1ydfl40");
+    			attr_dev(h3, "class", "svelte-r4hfmv");
     			add_location(h3, file$f, 81, 2, 2280);
     		},
     		m: function mount(target, anchor) {
@@ -6897,7 +6897,7 @@ var app = (function () {
     	return block;
     }
 
-    // (103:4) {:else}
+    // (104:4) {:else}
     function create_else_block$2(ctx) {
     	let button0;
     	let t0;
@@ -6914,10 +6914,10 @@ var app = (function () {
     			button1 = element("button");
     			button1.textContent = "Delete Section";
     			attr_dev(button0, "class", "primary md");
-    			button0.disabled = /*sending*/ ctx[5];
-    			add_location(button0, file$f, 103, 4, 3002);
+    			button0.disabled = /*sending*/ ctx[6];
+    			add_location(button0, file$f, 104, 4, 3096);
     			attr_dev(button1, "class", "secondary md");
-    			add_location(button1, file$f, 104, 4, 3094);
+    			add_location(button1, file$f, 105, 4, 3188);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button0, anchor);
@@ -6927,16 +6927,16 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(button0, "click", /*update*/ ctx[7], false, false, false),
-    					listen_dev(button1, "click", /*delSection*/ ctx[8], false, false, false)
+    					listen_dev(button0, "click", /*update*/ ctx[8], false, false, false),
+    					listen_dev(button1, "click", /*delSection*/ ctx[9], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*sending*/ 32) {
-    				prop_dev(button0, "disabled", /*sending*/ ctx[5]);
+    			if (dirty & /*sending*/ 64) {
+    				prop_dev(button0, "disabled", /*sending*/ ctx[6]);
     			}
     		},
     		d: function destroy(detaching) {
@@ -6952,14 +6952,14 @@ var app = (function () {
     		block,
     		id: create_else_block$2.name,
     		type: "else",
-    		source: "(103:4) {:else}",
+    		source: "(104:4) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (101:4) {#if !section.id}
+    // (102:4) {#if !section.id}
     function create_if_block$7(ctx) {
     	let button;
     	let t;
@@ -6971,21 +6971,21 @@ var app = (function () {
     			button = element("button");
     			t = text("Add Section");
     			attr_dev(button, "class", "primary md");
-    			button.disabled = /*sending*/ ctx[5];
-    			add_location(button, file$f, 101, 4, 2904);
+    			button.disabled = /*sending*/ ctx[6];
+    			add_location(button, file$f, 102, 4, 2998);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
     			append_dev(button, t);
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*add*/ ctx[6], false, false, false);
+    				dispose = listen_dev(button, "click", /*add*/ ctx[7], false, false, false);
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*sending*/ 32) {
-    				prop_dev(button, "disabled", /*sending*/ ctx[5]);
+    			if (dirty & /*sending*/ 64) {
+    				prop_dev(button, "disabled", /*sending*/ ctx[6]);
     			}
     		},
     		d: function destroy(detaching) {
@@ -6999,7 +6999,7 @@ var app = (function () {
     		block,
     		id: create_if_block$7.name,
     		type: "if",
-    		source: "(101:4) {#if !section.id}",
+    		source: "(102:4) {#if !section.id}",
     		ctx
     	});
 
@@ -7009,7 +7009,7 @@ var app = (function () {
     function create_fragment$f(ctx) {
     	let div4;
     	let t0;
-    	let p;
+    	let p0;
     	let t1;
     	let t2;
     	let form;
@@ -7018,16 +7018,20 @@ var app = (function () {
     	let t4;
     	let input;
     	let t5;
+    	let p1;
+    	let t6_value = /*errors*/ ctx[5].name + "";
+    	let t6;
+    	let t7;
     	let div1;
     	let label1;
-    	let t7;
-    	let textarea;
-    	let t8;
-    	let div2;
     	let t9;
+    	let textarea;
+    	let t10;
+    	let div2;
+    	let t11;
     	let switch_1;
     	let updating_set;
-    	let t10;
+    	let t12;
     	let div3;
     	let current;
     	let mounted;
@@ -7042,7 +7046,7 @@ var app = (function () {
     	let if_block0 = current_block_type(ctx);
 
     	function switch_1_set_binding(value) {
-    		/*switch_1_set_binding*/ ctx[12].call(null, value);
+    		/*switch_1_set_binding*/ ctx[13].call(null, value);
     	}
 
     	let switch_1_props = {};
@@ -7067,7 +7071,7 @@ var app = (function () {
     			div4 = element("div");
     			if_block0.c();
     			t0 = space();
-    			p = element("p");
+    			p0 = element("p");
     			t1 = text(/*error*/ ctx[4]);
     			t2 = space();
     			form = element("form");
@@ -7077,43 +7081,50 @@ var app = (function () {
     			t4 = space();
     			input = element("input");
     			t5 = space();
+    			p1 = element("p");
+    			t6 = text(t6_value);
+    			t7 = space();
     			div1 = element("div");
     			label1 = element("label");
     			label1.textContent = "Description:";
-    			t7 = space();
+    			t9 = space();
     			textarea = element("textarea");
-    			t8 = space();
-    			div2 = element("div");
-    			t9 = text("Visible: ");
-    			create_component(switch_1.$$.fragment);
     			t10 = space();
+    			div2 = element("div");
+    			t11 = text("Visible: ");
+    			create_component(switch_1.$$.fragment);
+    			t12 = space();
     			div3 = element("div");
     			if_block1.c();
-    			attr_dev(p, "class", "error svelte-1ydfl40");
-    			toggle_class(p, "show", /*error*/ ctx[4]);
-    			add_location(p, file$f, 85, 2, 2347);
+    			attr_dev(p0, "class", "error svelte-r4hfmv");
+    			toggle_class(p0, "show", /*error*/ ctx[4]);
+    			add_location(p0, file$f, 85, 2, 2347);
     			attr_dev(label0, "for", "name");
-    			attr_dev(label0, "class", "svelte-1ydfl40");
+    			attr_dev(label0, "class", "svelte-r4hfmv");
     			add_location(label0, file$f, 88, 6, 2471);
     			attr_dev(input, "id", "name");
     			attr_dev(input, "type", "text");
     			input.required = true;
-    			attr_dev(input, "class", "svelte-1ydfl40");
+    			attr_dev(input, "class", "svelte-r4hfmv");
+    			toggle_class(input, "invalid", /*errors*/ ctx[5].name);
     			add_location(input, file$f, 89, 6, 2514);
-    			attr_dev(div0, "class", "name svelte-1ydfl40");
+    			attr_dev(div0, "class", "name svelte-r4hfmv");
     			add_location(div0, file$f, 87, 4, 2446);
+    			attr_dev(p1, "class", "error svelte-r4hfmv");
+    			toggle_class(p1, "show", /*error*/ ctx[4]);
+    			add_location(p1, file$f, 91, 4, 2645);
     			attr_dev(label1, "for", "description");
-    			add_location(label1, file$f, 92, 4, 2645);
+    			add_location(label1, file$f, 93, 6, 2735);
     			attr_dev(textarea, "id", "description");
-    			attr_dev(textarea, "class", "svelte-1ydfl40");
-    			add_location(textarea, file$f, 93, 4, 2695);
-    			attr_dev(div1, "class", "description svelte-1ydfl40");
-    			add_location(div1, file$f, 91, 2, 2615);
+    			attr_dev(textarea, "class", "svelte-r4hfmv");
+    			add_location(textarea, file$f, 94, 6, 2787);
+    			attr_dev(div1, "class", "description svelte-r4hfmv");
+    			add_location(div1, file$f, 92, 4, 2703);
     			add_location(form, file$f, 86, 2, 2397);
-    			attr_dev(div2, "class", "visible svelte-1ydfl40");
-    			add_location(div2, file$f, 96, 2, 2780);
-    			attr_dev(div3, "class", "buttons svelte-1ydfl40");
-    			add_location(div3, file$f, 99, 2, 2856);
+    			attr_dev(div2, "class", "visible svelte-r4hfmv");
+    			add_location(div2, file$f, 97, 2, 2874);
+    			attr_dev(div3, "class", "buttons svelte-r4hfmv");
+    			add_location(div3, file$f, 100, 2, 2950);
     			add_location(div4, file$f, 79, 0, 2252);
     		},
     		l: function claim(nodes) {
@@ -7123,8 +7134,8 @@ var app = (function () {
     			insert_dev(target, div4, anchor);
     			if_block0.m(div4, null);
     			append_dev(div4, t0);
-    			append_dev(div4, p);
-    			append_dev(p, t1);
+    			append_dev(div4, p0);
+    			append_dev(p0, t1);
     			append_dev(div4, t2);
     			append_dev(div4, form);
     			append_dev(form, div0);
@@ -7133,25 +7144,28 @@ var app = (function () {
     			append_dev(div0, input);
     			set_input_value(input, /*name*/ ctx[1]);
     			append_dev(form, t5);
+    			append_dev(form, p1);
+    			append_dev(p1, t6);
+    			append_dev(form, t7);
     			append_dev(form, div1);
     			append_dev(div1, label1);
-    			append_dev(div1, t7);
+    			append_dev(div1, t9);
     			append_dev(div1, textarea);
     			set_input_value(textarea, /*description*/ ctx[2]);
-    			append_dev(div4, t8);
-    			append_dev(div4, div2);
-    			append_dev(div2, t9);
-    			mount_component(switch_1, div2, null);
     			append_dev(div4, t10);
+    			append_dev(div4, div2);
+    			append_dev(div2, t11);
+    			mount_component(switch_1, div2, null);
+    			append_dev(div4, t12);
     			append_dev(div4, div3);
     			if_block1.m(div3, null);
     			current = true;
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input, "input", /*input_input_handler*/ ctx[9]),
-    					listen_dev(input, "input", /*input_handler*/ ctx[10], false, false, false),
-    					listen_dev(textarea, "input", /*textarea_input_handler*/ ctx[11]),
+    					listen_dev(input, "input", /*input_input_handler*/ ctx[10]),
+    					listen_dev(input, "input", /*input_handler*/ ctx[11], false, false, false),
+    					listen_dev(textarea, "input", /*textarea_input_handler*/ ctx[12]),
     					listen_dev(form, "submit", prevent_default(submit_handler), false, true, false)
     				];
 
@@ -7174,11 +7188,21 @@ var app = (function () {
     			if (!current || dirty & /*error*/ 16) set_data_dev(t1, /*error*/ ctx[4]);
 
     			if (dirty & /*error*/ 16) {
-    				toggle_class(p, "show", /*error*/ ctx[4]);
+    				toggle_class(p0, "show", /*error*/ ctx[4]);
     			}
 
     			if (dirty & /*name*/ 2 && input.value !== /*name*/ ctx[1]) {
     				set_input_value(input, /*name*/ ctx[1]);
+    			}
+
+    			if (dirty & /*errors*/ 32) {
+    				toggle_class(input, "invalid", /*errors*/ ctx[5].name);
+    			}
+
+    			if ((!current || dirty & /*errors*/ 32) && t6_value !== (t6_value = /*errors*/ ctx[5].name + "")) set_data_dev(t6, t6_value);
+
+    			if (dirty & /*error*/ 16) {
+    				toggle_class(p1, "show", /*error*/ ctx[4]);
     			}
 
     			if (dirty & /*description*/ 4) {
@@ -7260,42 +7284,42 @@ var app = (function () {
     	});
 
     	function add() {
-    		$$invalidate(5, sending = true);
+    		$$invalidate(6, sending = true);
 
     		post("/menu/sections/", { name, description, visible }).then(response => {
     			if (response.status === 200 || response.status === 400) return response.json();
 
     			if (response.status === 403) {
     				$$invalidate(4, error = "You are not allowed to add new sections");
-    				$$invalidate(5, sending = false);
+    				$$invalidate(6, sending = false);
     			}
     		}).then(data => {
     			if (data.error) {
     				$$invalidate(4, error = data.error);
-    				errors = data.errors;
+    				$$invalidate(5, errors = data.errors);
     			} else {
     				dispatch("update", { "section": data });
     				$$invalidate(0, section = data);
     				$$invalidate(1, { name, description, visible } = data, name, $$invalidate(2, description), $$invalidate(3, visible));
     			}
 
-    			$$invalidate(5, sending = false);
+    			$$invalidate(6, sending = false);
     		});
     	}
 
     	function update() {
-    		$$invalidate(5, sending = true);
+    		$$invalidate(6, sending = true);
 
     		patch("/menu/sections/" + section.id + "/", { name, description, visible }).then(response => {
     			if (response.status === 200 || response.status === 400) return response.json();
     			if (response.status === 403) $$invalidate(4, error = "You are not allowed to update sections.");
     			if (response.status === 404) $$invalidate(4, error = "Section not found.");
-    			$$invalidate(5, sending = false);
+    			$$invalidate(6, sending = false);
     		}).then(data => {
     			if (data) {
     				if (data.error) {
     					$$invalidate(4, error = data.error);
-    					errors = data.errors;
+    					$$invalidate(5, errors = data.errors);
     				} else {
     					dispatch("update", { "section": data });
     					$$invalidate(0, section = data);
@@ -7303,18 +7327,18 @@ var app = (function () {
     				}
     			}
 
-    			$$invalidate(5, sending = false);
+    			$$invalidate(6, sending = false);
     		});
     	}
 
     	function delSection() {
-    		$$invalidate(5, sending = true);
+    		$$invalidate(6, sending = true);
 
     		del("/menu/sections/" + section.id + "/").then(response => {
     			if (response.status === 204) dispatch("delete", { section: { id: section.id } });
     			if (response.status === 403) $$invalidate(4, error = "You are not allowed to delete sections.");
     			if (response.status === 404) $$invalidate(4, error = "Section not found.");
-    			$$invalidate(5, sending = false);
+    			$$invalidate(6, sending = false);
     		});
     	}
 
@@ -7375,8 +7399,8 @@ var app = (function () {
     		if ("description" in $$props) $$invalidate(2, description = $$props.description);
     		if ("visible" in $$props) $$invalidate(3, visible = $$props.visible);
     		if ("error" in $$props) $$invalidate(4, error = $$props.error);
-    		if ("errors" in $$props) errors = $$props.errors;
-    		if ("sending" in $$props) $$invalidate(5, sending = $$props.sending);
+    		if ("errors" in $$props) $$invalidate(5, errors = $$props.errors);
+    		if ("sending" in $$props) $$invalidate(6, sending = $$props.sending);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -7389,6 +7413,7 @@ var app = (function () {
     		description,
     		visible,
     		error,
+    		errors,
     		sending,
     		add,
     		update,
@@ -7425,7 +7450,7 @@ var app = (function () {
     /* src/dashboard/MenuItemUpdate.svelte generated by Svelte v3.23.2 */
     const file$g = "src/dashboard/MenuItemUpdate.svelte";
 
-    // (85:2) {:else}
+    // (86:2) {:else}
     function create_else_block_1$2(ctx) {
     	let h3;
     	let t_value = /*item*/ ctx[0].name + "";
@@ -7435,8 +7460,8 @@ var app = (function () {
     		c: function create() {
     			h3 = element("h3");
     			t = text(t_value);
-    			attr_dev(h3, "class", "svelte-1e3x77m");
-    			add_location(h3, file$g, 85, 2, 2472);
+    			attr_dev(h3, "class", "svelte-1a4j597");
+    			add_location(h3, file$g, 86, 2, 2491);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h3, anchor);
@@ -7454,14 +7479,14 @@ var app = (function () {
     		block,
     		id: create_else_block_1$2.name,
     		type: "else",
-    		source: "(85:2) {:else}",
+    		source: "(86:2) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (83:2) {#if !item.id}
+    // (84:2) {#if !item.id}
     function create_if_block_1$4(ctx) {
     	let h3;
 
@@ -7469,8 +7494,8 @@ var app = (function () {
     		c: function create() {
     			h3 = element("h3");
     			h3.textContent = "New Item";
-    			attr_dev(h3, "class", "svelte-1e3x77m");
-    			add_location(h3, file$g, 83, 2, 2442);
+    			attr_dev(h3, "class", "svelte-1a4j597");
+    			add_location(h3, file$g, 84, 2, 2461);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h3, anchor);
@@ -7485,14 +7510,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$4.name,
     		type: "if",
-    		source: "(83:2) {#if !item.id}",
+    		source: "(84:2) {#if !item.id}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (110:4) {:else}
+    // (113:4) {:else}
     function create_else_block$3(ctx) {
     	let button0;
     	let t0;
@@ -7509,10 +7534,10 @@ var app = (function () {
     			button1 = element("button");
     			button1.textContent = "Delete Item";
     			attr_dev(button0, "class", "primary md");
-    			button0.disabled = /*sending*/ ctx[7];
-    			add_location(button0, file$g, 110, 4, 3313);
+    			button0.disabled = /*sending*/ ctx[8];
+    			add_location(button0, file$g, 113, 4, 3525);
     			attr_dev(button1, "class", "secondary md");
-    			add_location(button1, file$g, 111, 4, 3402);
+    			add_location(button1, file$g, 114, 4, 3614);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button0, anchor);
@@ -7522,16 +7547,16 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(button0, "click", /*update*/ ctx[9], false, false, false),
-    					listen_dev(button1, "click", /*delSection*/ ctx[10], false, false, false)
+    					listen_dev(button0, "click", /*update*/ ctx[10], false, false, false),
+    					listen_dev(button1, "click", /*delSection*/ ctx[11], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*sending*/ 128) {
-    				prop_dev(button0, "disabled", /*sending*/ ctx[7]);
+    			if (dirty & /*sending*/ 256) {
+    				prop_dev(button0, "disabled", /*sending*/ ctx[8]);
     			}
     		},
     		d: function destroy(detaching) {
@@ -7547,14 +7572,14 @@ var app = (function () {
     		block,
     		id: create_else_block$3.name,
     		type: "else",
-    		source: "(110:4) {:else}",
+    		source: "(113:4) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (108:4) {#if !item.id}
+    // (111:4) {#if !item.id}
     function create_if_block$8(ctx) {
     	let button;
     	let t;
@@ -7566,21 +7591,21 @@ var app = (function () {
     			button = element("button");
     			t = text("Add Item");
     			attr_dev(button, "class", "primary md");
-    			button.disabled = /*sending*/ ctx[7];
-    			add_location(button, file$g, 108, 4, 3218);
+    			button.disabled = /*sending*/ ctx[8];
+    			add_location(button, file$g, 111, 4, 3430);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
     			append_dev(button, t);
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*add*/ ctx[8], false, false, false);
+    				dispose = listen_dev(button, "click", /*add*/ ctx[9], false, false, false);
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*sending*/ 128) {
-    				prop_dev(button, "disabled", /*sending*/ ctx[7]);
+    			if (dirty & /*sending*/ 256) {
+    				prop_dev(button, "disabled", /*sending*/ ctx[8]);
     			}
     		},
     		d: function destroy(detaching) {
@@ -7594,7 +7619,7 @@ var app = (function () {
     		block,
     		id: create_if_block$8.name,
     		type: "if",
-    		source: "(108:4) {#if !item.id}",
+    		source: "(111:4) {#if !item.id}",
     		ctx
     	});
 
@@ -7604,7 +7629,7 @@ var app = (function () {
     function create_fragment$g(ctx) {
     	let div5;
     	let t0;
-    	let p;
+    	let p0;
     	let t1;
     	let t2;
     	let form;
@@ -7613,24 +7638,32 @@ var app = (function () {
     	let t4;
     	let input0;
     	let t5;
+    	let p1;
+    	let t6_value = /*errors*/ ctx[7].name + "";
+    	let t6;
+    	let t7;
     	let div1;
     	let label1;
-    	let t7;
+    	let t9;
     	let textarea;
-    	let t8;
+    	let t10;
     	let div2;
     	let label2;
-    	let t10;
+    	let t12;
     	let input1;
-    	let t11;
+    	let t13;
     	let switch0;
     	let updating_set;
-    	let t12;
+    	let t14;
+    	let p2;
+    	let t15_value = /*errors*/ ctx[7].price + "";
+    	let t15;
+    	let t16;
     	let div3;
-    	let t13;
+    	let t17;
     	let switch1;
     	let updating_set_1;
-    	let t14;
+    	let t18;
     	let div4;
     	let current;
     	let mounted;
@@ -7645,7 +7678,7 @@ var app = (function () {
     	let if_block0 = current_block_type(ctx);
 
     	function switch0_set_binding(value) {
-    		/*switch0_set_binding*/ ctx[16].call(null, value);
+    		/*switch0_set_binding*/ ctx[17].call(null, value);
     	}
 
     	let switch0_props = {};
@@ -7658,7 +7691,7 @@ var app = (function () {
     	binding_callbacks.push(() => bind(switch0, "set", switch0_set_binding));
 
     	function switch1_set_binding(value) {
-    		/*switch1_set_binding*/ ctx[17].call(null, value);
+    		/*switch1_set_binding*/ ctx[18].call(null, value);
     	}
 
     	let switch1_props = {};
@@ -7683,7 +7716,7 @@ var app = (function () {
     			div5 = element("div");
     			if_block0.c();
     			t0 = space();
-    			p = element("p");
+    			p0 = element("p");
     			t1 = text(/*error*/ ctx[6]);
     			t2 = space();
     			form = element("form");
@@ -7693,62 +7726,76 @@ var app = (function () {
     			t4 = space();
     			input0 = element("input");
     			t5 = space();
+    			p1 = element("p");
+    			t6 = text(t6_value);
+    			t7 = space();
     			div1 = element("div");
     			label1 = element("label");
     			label1.textContent = "Description:";
-    			t7 = space();
+    			t9 = space();
     			textarea = element("textarea");
-    			t8 = space();
+    			t10 = space();
     			div2 = element("div");
     			label2 = element("label");
     			label2.textContent = "Price:";
-    			t10 = text("\n    £");
+    			t12 = text("\n    £");
     			input1 = element("input");
-    			t11 = text("\n    Vat: ");
+    			t13 = text("\n    Vat: ");
     			create_component(switch0.$$.fragment);
-    			t12 = space();
-    			div3 = element("div");
-    			t13 = text("Visible: ");
-    			create_component(switch1.$$.fragment);
     			t14 = space();
+    			p2 = element("p");
+    			t15 = text(t15_value);
+    			t16 = space();
+    			div3 = element("div");
+    			t17 = text("Visible: ");
+    			create_component(switch1.$$.fragment);
+    			t18 = space();
     			div4 = element("div");
     			if_block1.c();
-    			attr_dev(p, "class", "error svelte-1e3x77m");
-    			toggle_class(p, "show", /*error*/ ctx[6]);
-    			add_location(p, file$g, 87, 2, 2503);
+    			attr_dev(p0, "class", "error svelte-1a4j597");
+    			toggle_class(p0, "show", /*error*/ ctx[6]);
+    			add_location(p0, file$g, 88, 2, 2522);
     			attr_dev(label0, "for", "name");
-    			attr_dev(label0, "class", "svelte-1e3x77m");
-    			add_location(label0, file$g, 90, 6, 2627);
+    			attr_dev(label0, "class", "svelte-1a4j597");
+    			add_location(label0, file$g, 91, 6, 2646);
     			attr_dev(input0, "id", "name");
     			attr_dev(input0, "type", "text");
     			input0.required = true;
-    			attr_dev(input0, "class", "svelte-1e3x77m");
-    			add_location(input0, file$g, 91, 6, 2670);
-    			attr_dev(div0, "class", "name svelte-1e3x77m");
-    			add_location(div0, file$g, 89, 4, 2602);
+    			attr_dev(input0, "class", "svelte-1a4j597");
+    			toggle_class(input0, "invalid", /*errors*/ ctx[7].name);
+    			add_location(input0, file$g, 92, 6, 2689);
+    			attr_dev(div0, "class", "name svelte-1a4j597");
+    			add_location(div0, file$g, 90, 4, 2621);
+    			attr_dev(p1, "class", "error svelte-1a4j597");
+    			toggle_class(p1, "show", /*errors*/ ctx[7].name);
+    			add_location(p1, file$g, 94, 4, 2826);
     			attr_dev(label1, "for", "description");
-    			attr_dev(label1, "class", "svelte-1e3x77m");
-    			add_location(label1, file$g, 94, 4, 2801);
+    			attr_dev(label1, "class", "svelte-1a4j597");
+    			add_location(label1, file$g, 96, 4, 2918);
     			attr_dev(textarea, "id", "description");
-    			attr_dev(textarea, "class", "svelte-1e3x77m");
-    			add_location(textarea, file$g, 95, 4, 2851);
-    			attr_dev(div1, "class", "description svelte-1e3x77m");
-    			add_location(div1, file$g, 93, 2, 2771);
+    			attr_dev(textarea, "class", "svelte-1a4j597");
+    			add_location(textarea, file$g, 97, 4, 2968);
+    			attr_dev(div1, "class", "description svelte-1a4j597");
+    			add_location(div1, file$g, 95, 2, 2888);
     			attr_dev(label2, "for", "price");
-    			attr_dev(label2, "class", "svelte-1e3x77m");
-    			add_location(label2, file$g, 98, 4, 2950);
+    			attr_dev(label2, "class", "svelte-1a4j597");
+    			add_location(label2, file$g, 100, 4, 3067);
     			attr_dev(input1, "type", "number");
     			attr_dev(input1, "id", "price");
-    			attr_dev(input1, "class", "svelte-1e3x77m");
-    			add_location(input1, file$g, 99, 5, 2989);
-    			attr_dev(div2, "class", "price svelte-1e3x77m");
-    			add_location(div2, file$g, 97, 2, 2926);
-    			add_location(form, file$g, 88, 2, 2553);
-    			attr_dev(div3, "class", "visible svelte-1e3x77m");
-    			add_location(div3, file$g, 103, 2, 3097);
-    			attr_dev(div4, "class", "buttons svelte-1e3x77m");
-    			add_location(div4, file$g, 106, 2, 3173);
-    			add_location(div5, file$g, 81, 0, 2417);
+    			attr_dev(input1, "class", "svelte-1a4j597");
+    			toggle_class(input1, "invalid", /*errors*/ ctx[7].price);
+    			add_location(input1, file$g, 101, 5, 3106);
+    			attr_dev(p2, "class", "error svelte-1a4j597");
+    			toggle_class(p2, "show", /*errors*/ ctx[7].price);
+    			add_location(p2, file$g, 103, 4, 3226);
+    			attr_dev(div2, "class", "price svelte-1a4j597");
+    			add_location(div2, file$g, 99, 2, 3043);
+    			add_location(form, file$g, 89, 2, 2572);
+    			attr_dev(div3, "class", "visible svelte-1a4j597");
+    			add_location(div3, file$g, 106, 2, 3309);
+    			attr_dev(div4, "class", "buttons svelte-1a4j597");
+    			add_location(div4, file$g, 109, 2, 3385);
+    			add_location(div5, file$g, 82, 0, 2436);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -7757,8 +7804,8 @@ var app = (function () {
     			insert_dev(target, div5, anchor);
     			if_block0.m(div5, null);
     			append_dev(div5, t0);
-    			append_dev(div5, p);
-    			append_dev(p, t1);
+    			append_dev(div5, p0);
+    			append_dev(p0, t1);
     			append_dev(div5, t2);
     			append_dev(div5, form);
     			append_dev(form, div0);
@@ -7767,34 +7814,40 @@ var app = (function () {
     			append_dev(div0, input0);
     			set_input_value(input0, /*name*/ ctx[1]);
     			append_dev(form, t5);
+    			append_dev(form, p1);
+    			append_dev(p1, t6);
+    			append_dev(form, t7);
     			append_dev(form, div1);
     			append_dev(div1, label1);
-    			append_dev(div1, t7);
+    			append_dev(div1, t9);
     			append_dev(div1, textarea);
     			set_input_value(textarea, /*description*/ ctx[2]);
-    			append_dev(form, t8);
+    			append_dev(form, t10);
     			append_dev(form, div2);
     			append_dev(div2, label2);
-    			append_dev(div2, t10);
+    			append_dev(div2, t12);
     			append_dev(div2, input1);
     			set_input_value(input1, /*price*/ ctx[3]);
-    			append_dev(div2, t11);
+    			append_dev(div2, t13);
     			mount_component(switch0, div2, null);
-    			append_dev(div5, t12);
+    			append_dev(div2, t14);
+    			append_dev(div2, p2);
+    			append_dev(p2, t15);
+    			append_dev(div5, t16);
     			append_dev(div5, div3);
-    			append_dev(div3, t13);
+    			append_dev(div3, t17);
     			mount_component(switch1, div3, null);
-    			append_dev(div5, t14);
+    			append_dev(div5, t18);
     			append_dev(div5, div4);
     			if_block1.m(div4, null);
     			current = true;
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[12]),
-    					listen_dev(input0, "input", /*input_handler*/ ctx[13], false, false, false),
-    					listen_dev(textarea, "input", /*textarea_input_handler*/ ctx[14]),
-    					listen_dev(input1, "input", /*input1_input_handler*/ ctx[15]),
+    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[13]),
+    					listen_dev(input0, "input", /*input_handler*/ ctx[14], false, false, false),
+    					listen_dev(textarea, "input", /*textarea_input_handler*/ ctx[15]),
+    					listen_dev(input1, "input", /*input1_input_handler*/ ctx[16]),
     					listen_dev(form, "submit", prevent_default(submit_handler$1), false, true, false)
     				];
 
@@ -7817,11 +7870,21 @@ var app = (function () {
     			if (!current || dirty & /*error*/ 64) set_data_dev(t1, /*error*/ ctx[6]);
 
     			if (dirty & /*error*/ 64) {
-    				toggle_class(p, "show", /*error*/ ctx[6]);
+    				toggle_class(p0, "show", /*error*/ ctx[6]);
     			}
 
     			if (dirty & /*name*/ 2 && input0.value !== /*name*/ ctx[1]) {
     				set_input_value(input0, /*name*/ ctx[1]);
+    			}
+
+    			if (dirty & /*errors*/ 128) {
+    				toggle_class(input0, "invalid", /*errors*/ ctx[7].name);
+    			}
+
+    			if ((!current || dirty & /*errors*/ 128) && t6_value !== (t6_value = /*errors*/ ctx[7].name + "")) set_data_dev(t6, t6_value);
+
+    			if (dirty & /*errors*/ 128) {
+    				toggle_class(p1, "show", /*errors*/ ctx[7].name);
     			}
 
     			if (dirty & /*description*/ 4) {
@@ -7830,6 +7893,10 @@ var app = (function () {
 
     			if (dirty & /*price*/ 8 && to_number(input1.value) !== /*price*/ ctx[3]) {
     				set_input_value(input1, /*price*/ ctx[3]);
+    			}
+
+    			if (dirty & /*errors*/ 128) {
+    				toggle_class(input1, "invalid", /*errors*/ ctx[7].price);
     			}
 
     			const switch0_changes = {};
@@ -7841,6 +7908,12 @@ var app = (function () {
     			}
 
     			switch0.$set(switch0_changes);
+    			if ((!current || dirty & /*errors*/ 128) && t15_value !== (t15_value = /*errors*/ ctx[7].price + "")) set_data_dev(t15, t15_value);
+
+    			if (dirty & /*errors*/ 128) {
+    				toggle_class(p2, "show", /*errors*/ ctx[7].price);
+    			}
+
     			const switch1_changes = {};
 
     			if (!updating_set_1 && dirty & /*visible*/ 32) {
@@ -7906,6 +7979,7 @@ var app = (function () {
     	const dispatch = createEventDispatcher();
     	let name, description, price, vat, visible;
     	let error = false;
+    	let errors = {};
     	let sending = false;
 
     	onMount(() => {
@@ -7921,7 +7995,7 @@ var app = (function () {
     	});
 
     	function add() {
-    		$$invalidate(7, sending = true);
+    		$$invalidate(8, sending = true);
 
     		post("/menu/items/", {
     			name,
@@ -7935,12 +8009,12 @@ var app = (function () {
 
     			if (response.status === 403) {
     				$$invalidate(6, error = "You are not allowed to add new items");
-    				$$invalidate(7, sending = false);
+    				$$invalidate(8, sending = false);
     			}
     		}).then(data => {
     			if (data.error) {
     				$$invalidate(6, error = data.error);
-    				errors = data.errors;
+    				$$invalidate(7, errors = data.errors);
     			} else {
     				data.sectionId = section.id;
     				dispatch("update", { "item": data });
@@ -7948,7 +8022,7 @@ var app = (function () {
     				$$invalidate(1, { name, description, price, vat, visible } = data, name, $$invalidate(2, description), $$invalidate(3, price), $$invalidate(4, vat), $$invalidate(5, visible));
     			}
 
-    			$$invalidate(7, sending = false);
+    			$$invalidate(8, sending = false);
     		});
     	}
 
@@ -7957,12 +8031,12 @@ var app = (function () {
     			if (response.status === 200 || response.status === 400) return response.json();
     			if (response.status === 403) $$invalidate(6, error = "You are not allowed to update items.");
     			if (response.status === 404) $$invalidate(6, error = "Item not found.");
-    			$$invalidate(7, sending = false);
+    			$$invalidate(8, sending = false);
     		}).then(data => {
     			if (data) {
     				if (data.error) {
     					$$invalidate(6, error = data.error);
-    					errors = data.errors;
+    					$$invalidate(7, errors = data.errors);
     				} else {
     					data.sectionId = section.id;
     					dispatch("update", { "item": data });
@@ -7971,12 +8045,12 @@ var app = (function () {
     				}
     			}
 
-    			$$invalidate(7, sending = false);
+    			$$invalidate(8, sending = false);
     		});
     	}
 
     	function delSection() {
-    		$$invalidate(7, sending = true);
+    		$$invalidate(8, sending = true);
 
     		del("/menu/items/" + item.id + "/").then(response => {
     			if (response.status === 204) dispatch("delete", {
@@ -7985,7 +8059,7 @@ var app = (function () {
 
     			if (response.status === 403) $$invalidate(6, error = "You are not allowed to delete items.");
     			if (response.status === 404) $$invalidate(6, error = "Item not found.");
-    			$$invalidate(7, sending = false);
+    			$$invalidate(8, sending = false);
     		});
     	}
 
@@ -8003,7 +8077,7 @@ var app = (function () {
     		$$invalidate(1, name);
     	}
 
-    	const input_handler = () => $$invalidate(6, error = false);
+    	const input_handler = () => $$invalidate(7, errors.name = false, errors);
 
     	function textarea_input_handler() {
     		description = this.value;
@@ -8027,7 +8101,7 @@ var app = (function () {
 
     	$$self.$set = $$props => {
     		if ("item" in $$props) $$invalidate(0, item = $$props.item);
-    		if ("section" in $$props) $$invalidate(11, section = $$props.section);
+    		if ("section" in $$props) $$invalidate(12, section = $$props.section);
     	};
 
     	$$self.$capture_state = () => ({
@@ -8047,6 +8121,7 @@ var app = (function () {
     		vat,
     		visible,
     		error,
+    		errors,
     		sending,
     		add,
     		update,
@@ -8055,14 +8130,15 @@ var app = (function () {
 
     	$$self.$inject_state = $$props => {
     		if ("item" in $$props) $$invalidate(0, item = $$props.item);
-    		if ("section" in $$props) $$invalidate(11, section = $$props.section);
+    		if ("section" in $$props) $$invalidate(12, section = $$props.section);
     		if ("name" in $$props) $$invalidate(1, name = $$props.name);
     		if ("description" in $$props) $$invalidate(2, description = $$props.description);
     		if ("price" in $$props) $$invalidate(3, price = $$props.price);
     		if ("vat" in $$props) $$invalidate(4, vat = $$props.vat);
     		if ("visible" in $$props) $$invalidate(5, visible = $$props.visible);
     		if ("error" in $$props) $$invalidate(6, error = $$props.error);
-    		if ("sending" in $$props) $$invalidate(7, sending = $$props.sending);
+    		if ("errors" in $$props) $$invalidate(7, errors = $$props.errors);
+    		if ("sending" in $$props) $$invalidate(8, sending = $$props.sending);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -8077,6 +8153,7 @@ var app = (function () {
     		vat,
     		visible,
     		error,
+    		errors,
     		sending,
     		add,
     		update,
@@ -8094,7 +8171,7 @@ var app = (function () {
     class MenuItemUpdate extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$g, create_fragment$g, safe_not_equal, { item: 0, section: 11 });
+    		init(this, options, instance$g, create_fragment$g, safe_not_equal, { item: 0, section: 12 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,

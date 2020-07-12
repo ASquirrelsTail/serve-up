@@ -50,22 +50,22 @@
   {#await todaysOrders}
   <p>Loading Orders</p>
   {:then orders}
-  <div class="order-list">
+  <div class="section">
     <h3>Pending</h3>
     <p class="details">These orders haven't been sarted yet</p>
     <OrderList orders="{orders.filter(order => !order.accepted)}" on:editorder={editOrder}/>
   </div>
-  <div class="order-list">
+  <div class="section">
     <h3>Accepted</h3>
     <p class="details">These orders are being worked on</p>
     <OrderList orders="{orders.filter(order => order.accepted && !order.completed)}" on:editorder={editOrder}/>
   </div>
-  <div class="order-list">
+  <div class="section">
     <h3>Completed</h3>
     <p class="details">These orders have been served, but not paid</p>
     <OrderList orders="{orders.filter(order => order.completed && !order.paid)}" on:editorder={editOrder}/>
   </div>
-  <div class="order-list">
+  <div class="section">
     <h3>Paid</h3>
     <p class="details">These orders have been completed and paid</p>
     <OrderList orders="{orders.filter(order => order.completed && order.paid)}" on:editorder={editOrder}/>
@@ -100,12 +100,6 @@
   .details {
     font-size: 0.8em;
     margin: 0.2em;
-  }
-
-  .order-list {
-    margin: 0.2em;
-    border: 1px solid grey;
-    border-radius: 0.2em;
   }
 
   .review {

@@ -40,7 +40,7 @@ input, textarea {
 	box-sizing: border-box;
 }
 
-.invalid input {
+.invalid input, input.invalid {
 	border: 1px solid red;
 }
 

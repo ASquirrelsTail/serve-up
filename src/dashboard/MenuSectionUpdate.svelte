@@ -87,12 +87,13 @@
   <form on:submit|preventDefault="{() => {}}">
     <div class="name">
       <label for="name">Item name:</label>
-      <input id="name" type="text" bind:value={name} on:input="{() => error=false}" required>
+      <input id="name" type="text" bind:value={name} on:input="{() => error=false}" class:invalid={errors.name} required>
     </div>
-  <div class="description">
-    <label for="description">Description:</label>
-    <textarea id="description" bind:value={description}></textarea>
-  </div>
+    <p class="error" class:show={error}>{errors.name}</p>
+    <div class="description">
+      <label for="description">Description:</label>
+      <textarea id="description" bind:value={description}></textarea>
+    </div>
   </form>
   <div class="visible">
     Visible: <Switch bind:set={visible} />
@@ -127,7 +128,7 @@
     width: 60%;
   }
 
-  .description {
+  .description, .error {
     width: 80%;
     margin: auto;
   }
@@ -148,7 +149,6 @@
   .error {
     color: red;
     font-size: 0.8em;
-    margin: 0;
     display: none;
   }
 

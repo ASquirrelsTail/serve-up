@@ -9,6 +9,7 @@
 
   let name, description, price, vat, visible;
   let error = false;
+  let errors = {};
   let sending = false;
   onMount(() => {
     if (!item.id){
@@ -89,16 +90,18 @@
   <form on:submit|preventDefault="{() => {}}">
     <div class="name">
       <label for="name">Item name:</label>
-      <input id="name" type="text" bind:value={name} on:input="{() => error=false}" required>
+      <input id="name" type="text" bind:value={name} on:input="{() => errors.name=false}" class:invalid={errors.name} required>
     </div>
+    <p class="error" class:show={errors.name}>{errors.name}</p>
   <div class="description">
     <label for="description">Description:</label>
     <textarea id="description" bind:value={description}></textarea>
   </div>
   <div class="price">
     <label for="price">Price:</label>
-    £<input type="number" id="price" bind:value={price}>
+    £<input type="number" id="price" bind:value={price} class:invalid={errors.price}>
     Vat: <Switch bind:set={vat} />
+    <p class="error" class:show={errors.price}>{errors.price}</p>
   </div>
   </form>
   <div class="visible">
@@ -138,7 +141,7 @@
     width: 60%;
   }
 
-  .description {
+  .description, .error {
     width: 80%;
     margin: auto;
   }
@@ -174,7 +177,6 @@
   .error {
     color: red;
     font-size: 0.8em;
-    margin: 0;
     display: none;
   }
 
