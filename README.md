@@ -15,10 +15,19 @@ A windows executable can be downloaded [here](https://serve-up.s3.eu-west-2.amaz
 - A simple web app lets customers browse the menu and place their order from their table.
 - A dashboard for employees allows them to manage orders, tables and alter the menu from their mobile device or a computer.
 
+## To Do
+
+- Document set up for first time users.
+- Improve admin site and backend to explain what is going on.
+- Have client side app check permissions for dashboard users.
+
 ## Technologies Used
 
-- Django
-- Svelte.js
+- Python
+- Django - Backend framework
+- Waitress - WSGI server for windows and linux
+- JavaScript
+- Svelte.js - Front end framework
 
 ## Deployment
 
