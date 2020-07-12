@@ -2,12 +2,12 @@
   import { fade, slide } from 'svelte/transition';
   export let review = false;
 
+  $: document.body.style = review ? 'overflow-y: hidden;' : '';
+
 </script>
 
-<svelte:body class:no-scroll={review} />
-
 {#if review}
-  <div class="cover" transition:fade on:click="{() => review = false}"></div>
+<div class="cover" transition:fade on:click="{() => review = false}"></div>
 
 <div class="review" transition:slide>
   <div class="inner">
@@ -17,10 +17,6 @@
 {/if}
 
 <style>
-  .no-scroll {
-    overflow-y: hidden;
-  }
-
   .review {
     height: 70vh;
     position: fixed;
