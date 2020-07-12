@@ -18,7 +18,7 @@ pyinst_args = [
 
 # PyInstaller.__main__.run(pyinst_args)  # running pyinstaller via this script in windows is super brittle
 
-os.system('pyinstaller {}'.format(pyinst_args.join(' ')))  # Just use the command line instead
+os.system('pyinstaller {}'.format(' '.join(pyinst_args)))  # Just use the command line instead
 
 dist_static_path = os.path.join('dist', 'static')
 if not os.path.exists(dist_static_path):
