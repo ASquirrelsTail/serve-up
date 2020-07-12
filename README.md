@@ -6,6 +6,7 @@ Customers register their details for the purpose of contact tracing, which are s
 
 Serve up is a free alternative to commercial cloud based order from table apps, aimed to help small cafes and restaurants during the coronavirus pandemic.
 
+A windows executable can be downloaded [here](https://serve-up.s3.eu-west-2.amazonaws.com/ServeUp.zip)
 
 ## Features
 
@@ -30,7 +31,19 @@ $ pip install -r requirements.txt
 Launch the wsgi server by running serveup.py. This will automatically do any first time set up, and open the admin interface.
 
 ```
-& python3 serveup.py
+$ python3 serveup.py
 ```
 
 From there you can add additional users and access the dashboard.
+
+### Building a binary
+
+Serve Up can be combined into a single executable and collection of static files using PyInstaller. However the process is very brittle, a functional windows build is availble to download. Feel free to build you own, but your milage may vary.
+
+After running the local deployment commands run:
+
+```
+$ python3 make.py
+```
+
+This creates a dist folder containing a single executable, and a copy of the static folder.
