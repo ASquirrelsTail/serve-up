@@ -20,6 +20,15 @@ from visitors.views import GroupView
 from orders.views import TableOrderView, DailyOrdersView, DashboardView, OrderView
 from tables.views import TablesView, TableEditView
 from admin.views import TokenLoginView
+from menu.views import MenuView, MenuItemsView, MenuSectionsView, MenuItemEditView, MenuSectionEditView
+
+menu_urls = [
+    path('', MenuView.as_view(), name='menu'),
+    path('sections/', MenuSectionsView.as_view(), name='sections'),
+    path('sections/<int:pk>/', MenuSectionEditView.as_view(), name='section-edit'),
+    path('items/', MenuItemsView.as_view(), name='items'),
+    path('items/<int:pk>/', MenuItemEditView.as_view(), name='item-edit'),
+]
 
 table_urls = [
     path('group/', GroupView.as_view(), name='group'),
@@ -40,7 +49,7 @@ tables_urls = [
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('admin/token/<slug:slug>/', TokenLoginView.as_view()),
-    path('menu/', include('menu.urls')),
+    path('menu/', include(menu_urls)),
     path('dashboard/', DashboardView.as_view(), name='dashboard'),
     path('orders/', include(orders_urls)),
     path('tables/', include(tables_urls)),

@@ -11,3 +11,5 @@ __pycache__
 /staticfiles/
 /static/qrcodes/*.png
 settings.json
+/dist/
+/build/

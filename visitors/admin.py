@@ -24,7 +24,6 @@ class VisitorInline(admin.TabularInline):
         return False
 
 
-@admin.register(Visitor)
 class VisitorAdmin(admin.ModelAdmin):
     readonly_fields = ('visitor_group',)
     exclude = ('group',)
@@ -41,7 +40,6 @@ class VisitorAdmin(admin.ModelAdmin):
         return False
 
 
-@admin.register(Group)
 class GroupAdmin(admin.ModelAdmin):
     readonly_fields = ('table', 'time')
     inlines = (VisitorInline,)
@@ -54,3 +52,7 @@ class GroupAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return False
+
+
+admin.site.register(Visitor, VisitorAdmin)
+admin.site.register(Group, GroupAdmin)

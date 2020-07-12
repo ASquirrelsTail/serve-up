@@ -29,6 +29,8 @@ def main():
     if not settings_exists:
         create_settings_file()
 
+    os.environ.setdefault('BASE_DIR', base_dir)
+
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'serveup.settings')
     django.setup()
 
