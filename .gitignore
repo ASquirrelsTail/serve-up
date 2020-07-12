@@ -13,3 +13,4 @@ __pycache__
 settings.json
 /dist/
 /build/
+*.spec
