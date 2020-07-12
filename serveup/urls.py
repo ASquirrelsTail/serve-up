@@ -19,6 +19,7 @@ from django.views.generic.base import TemplateView
 from visitors.views import GroupView
 from orders.views import TableOrderView, DailyOrdersView, DashboardView, OrderView
 from tables.views import TablesView, TableEditView
+from admin.views import TokenLoginView
 
 table_urls = [
     path('group/', GroupView.as_view(), name='group'),
@@ -38,6 +39,7 @@ tables_urls = [
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('admin/token/<slug:slug>/', TokenLoginView.as_view()),
     path('menu/', include('menu.urls')),
     path('dashboard/', DashboardView.as_view(), name='dashboard'),
     path('orders/', include(orders_urls)),

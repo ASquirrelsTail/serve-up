@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 from serveup.getip import IP
+from uuid import uuid4
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get('DEBUG', False)
 
 ALLOWED_HOSTS = [IP, 'localhost']
-PORT = os.environ.get('PORT', '8000')
+PORT = os.environ.get('PORT', '8080')
 
 
 # Application definition
@@ -125,3 +126,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
+
+ADMIN_TOKEN = uuid4().hex
