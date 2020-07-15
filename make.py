@@ -4,7 +4,7 @@ from distutils.dir_util import copy_tree
 
 pyinst_args = [
     '-c',
-    'serveup.py',
+    'serve_up.py',
     '--name=ServeUp',
     '--onefile',
     '--hidden-import=whitenoise',

@@ -132,6 +132,12 @@ var app = (function () {
     function detach(node) {
         node.parentNode.removeChild(node);
     }
+    function destroy_each(iterations, detaching) {
+        for (let i = 0; i < iterations.length; i += 1) {
+            if (iterations[i])
+                iterations[i].d(detaching);
+        }
+    }
     function element(name) {
         return document.createElement(name);
     }
@@ -172,6 +178,19 @@ var app = (function () {
     }
     function set_style(node, key, value, important) {
         node.style.setProperty(key, value, important ? 'important' : '');
+    }
+    function select_option(select, value) {
+        for (let i = 0; i < select.options.length; i += 1) {
+            const option = select.options[i];
+            if (option.__value === value) {
+                option.selected = true;
+                return;
+            }
+        }
+    }
+    function select_value(select) {
+        const selected_option = select.querySelector(':checked') || select.options[0];
+        return selected_option && selected_option.__value;
     }
     // unfortunately this can't be a constant as that wouldn't be tree-shakeable
     // so we cache the result instead
@@ -1428,7 +1447,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (40:0) {#each visitors as visitor, i (i)}
+    // (41:0) {#each visitors as visitor, i (i)}
     function create_each_block(key_1, ctx) {
     	let first;
     	let visitor;
@@ -1529,7 +1548,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(40:0) {#each visitors as visitor, i (i)}",
+    		source: "(41:0) {#each visitors as visitor, i (i)}",
     		ctx
     	});
 
@@ -1542,17 +1561,19 @@ var app = (function () {
     	let p0;
     	let t3;
     	let p1;
-    	let t4;
     	let t5;
+    	let p2;
+    	let t6;
+    	let t7;
     	let each_blocks = [];
     	let each_1_lookup = new Map();
-    	let t6;
+    	let t8;
     	let div;
     	let button0;
-    	let t7;
-    	let t8;
-    	let button1;
     	let t9;
+    	let t10;
+    	let button1;
+    	let t11;
     	let current;
     	let mounted;
     	let dispose;
@@ -1573,36 +1594,40 @@ var app = (function () {
     			h1.textContent = "Check In";
     			t1 = space();
     			p0 = element("p");
-    			p0.textContent = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero earum praesentium tempora fuga ipsam dolor sunt recusandae dicta possimus, animi dolore fugit labore nesciunt veniam vel officia, laboriosam deserunt molestiae!";
+    			p0.textContent = "Please enter the group's names and contact detals for at least one person who can provide details for the others. The information you provide will not shared with anyone except for NHS Track and Trace and will be deleted after 21 days.";
     			t3 = space();
     			p1 = element("p");
-    			t4 = text(/*error*/ ctx[2]);
+    			p1.textContent = "If you would prefer to leave your details in written form please speak to a member of staff.";
     			t5 = space();
+    			p2 = element("p");
+    			t6 = text(/*error*/ ctx[2]);
+    			t7 = space();
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			t6 = space();
+    			t8 = space();
     			div = element("div");
     			button0 = element("button");
-    			t7 = text("Add another visitor");
-    			t8 = space();
+    			t9 = text("Add another visitor");
+    			t10 = space();
     			button1 = element("button");
-    			t9 = text("Check In");
+    			t11 = text("Check In");
     			add_location(h1, file$1, 36, 0, 894);
     			add_location(p0, file$1, 37, 0, 912);
-    			attr_dev(p1, "class", "error svelte-1m93kac");
-    			toggle_class(p1, "visible", /*error*/ ctx[2]);
-    			add_location(p1, file$1, 38, 0, 1145);
+    			add_location(p1, file$1, 38, 0, 1155);
+    			attr_dev(p2, "class", "error svelte-1m93kac");
+    			toggle_class(p2, "visible", /*error*/ ctx[2]);
+    			add_location(p2, file$1, 39, 0, 1255);
     			attr_dev(button0, "class", "primary md svelte-1m93kac");
     			button0.disabled = /*disabled*/ ctx[4];
-    			add_location(button0, file$1, 47, 2, 1440);
+    			add_location(button0, file$1, 48, 2, 1550);
     			attr_dev(button1, "class", "primary md svelte-1m93kac");
     			button1.disabled = /*disabled*/ ctx[4];
-    			add_location(button1, file$1, 48, 2, 1546);
+    			add_location(button1, file$1, 49, 2, 1656);
     			attr_dev(div, "class", "buttons svelte-1m93kac");
-    			add_location(div, file$1, 46, 0, 1416);
+    			add_location(div, file$1, 47, 0, 1526);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1613,21 +1638,23 @@ var app = (function () {
     			insert_dev(target, p0, anchor);
     			insert_dev(target, t3, anchor);
     			insert_dev(target, p1, anchor);
-    			append_dev(p1, t4);
-    			/*p1_binding*/ ctx[7](p1);
     			insert_dev(target, t5, anchor);
+    			insert_dev(target, p2, anchor);
+    			append_dev(p2, t6);
+    			/*p2_binding*/ ctx[7](p2);
+    			insert_dev(target, t7, anchor);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(target, anchor);
     			}
 
-    			insert_dev(target, t6, anchor);
+    			insert_dev(target, t8, anchor);
     			insert_dev(target, div, anchor);
     			append_dev(div, button0);
-    			append_dev(button0, t7);
-    			append_dev(div, t8);
+    			append_dev(button0, t9);
+    			append_dev(div, t10);
     			append_dev(div, button1);
-    			append_dev(button1, t9);
+    			append_dev(button1, t11);
     			current = true;
 
     			if (!mounted) {
@@ -1640,10 +1667,10 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (!current || dirty & /*error*/ 4) set_data_dev(t4, /*error*/ ctx[2]);
+    			if (!current || dirty & /*error*/ 4) set_data_dev(t6, /*error*/ ctx[2]);
 
     			if (dirty & /*error*/ 4) {
-    				toggle_class(p1, "visible", /*error*/ ctx[2]);
+    				toggle_class(p2, "visible", /*error*/ ctx[2]);
     			}
 
     			if (dirty & /*errors, visitors, disabled*/ 19) {
@@ -1651,7 +1678,7 @@ var app = (function () {
     				validate_each_argument(each_value);
     				group_outros();
     				validate_each_keys(ctx, each_value, get_each_context, get_key);
-    				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, t6.parentNode, outro_and_destroy_block, create_each_block, t6, get_each_context);
+    				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, t8.parentNode, outro_and_destroy_block, create_each_block, t8, get_each_context);
     				check_outros();
     			}
 
@@ -1685,14 +1712,16 @@ var app = (function () {
     			if (detaching) detach_dev(p0);
     			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(p1);
-    			/*p1_binding*/ ctx[7](null);
     			if (detaching) detach_dev(t5);
+    			if (detaching) detach_dev(p2);
+    			/*p2_binding*/ ctx[7](null);
+    			if (detaching) detach_dev(t7);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].d(detaching);
     			}
 
-    			if (detaching) detach_dev(t6);
+    			if (detaching) detach_dev(t8);
     			if (detaching) detach_dev(div);
     			mounted = false;
     			run_all(dispose);
@@ -1754,7 +1783,7 @@ var app = (function () {
     	let { $$slots = {}, $$scope } = $$props;
     	validate_slots("CheckIn", $$slots, []);
 
-    	function p1_binding($$value) {
+    	function p2_binding($$value) {
     		binding_callbacks[$$value ? "unshift" : "push"](() => {
     			errorMessage = $$value;
     			$$invalidate(3, errorMessage);
@@ -1810,7 +1839,7 @@ var app = (function () {
     		disabled,
     		addVisitor,
     		checkIn,
-    		p1_binding,
+    		p2_binding,
     		visitor_name_binding,
     		visitor_email_binding,
     		visitor_phone_number_binding
@@ -7450,7 +7479,13 @@ var app = (function () {
     /* src/dashboard/MenuItemUpdate.svelte generated by Svelte v3.23.2 */
     const file$g = "src/dashboard/MenuItemUpdate.svelte";
 
-    // (86:2) {:else}
+    function get_each_context$7(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[21] = list[i];
+    	return child_ctx;
+    }
+
+    // (89:2) {:else}
     function create_else_block_1$2(ctx) {
     	let h3;
     	let t_value = /*item*/ ctx[0].name + "";
@@ -7461,7 +7496,7 @@ var app = (function () {
     			h3 = element("h3");
     			t = text(t_value);
     			attr_dev(h3, "class", "svelte-1a4j597");
-    			add_location(h3, file$g, 86, 2, 2491);
+    			add_location(h3, file$g, 89, 2, 2804);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h3, anchor);
@@ -7479,14 +7514,14 @@ var app = (function () {
     		block,
     		id: create_else_block_1$2.name,
     		type: "else",
-    		source: "(86:2) {:else}",
+    		source: "(89:2) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (84:2) {#if !item.id}
+    // (87:2) {#if !item.id}
     function create_if_block_1$4(ctx) {
     	let h3;
 
@@ -7495,7 +7530,7 @@ var app = (function () {
     			h3 = element("h3");
     			h3.textContent = "New Item";
     			attr_dev(h3, "class", "svelte-1a4j597");
-    			add_location(h3, file$g, 84, 2, 2461);
+    			add_location(h3, file$g, 87, 2, 2774);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h3, anchor);
@@ -7510,14 +7545,53 @@ var app = (function () {
     		block,
     		id: create_if_block_1$4.name,
     		type: "if",
-    		source: "(84:2) {#if !item.id}",
+    		source: "(87:2) {#if !item.id}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (113:4) {:else}
+    // (108:6) {#each vatOptions as option}
+    function create_each_block$7(ctx) {
+    	let option;
+    	let t0_value = /*option*/ ctx[21].text + "";
+    	let t0;
+    	let t1;
+    	let option_value_value;
+
+    	const block = {
+    		c: function create() {
+    			option = element("option");
+    			t0 = text(t0_value);
+    			t1 = space();
+    			option.__value = option_value_value = /*option*/ ctx[21];
+    			option.value = option.__value;
+    			add_location(option, file$g, 108, 6, 3586);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, option, anchor);
+    			append_dev(option, t0);
+    			append_dev(option, t1);
+    		},
+    		p: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(option);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block$7.name,
+    		type: "each",
+    		source: "(108:6) {#each vatOptions as option}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (124:4) {:else}
     function create_else_block$3(ctx) {
     	let button0;
     	let t0;
@@ -7535,9 +7609,9 @@ var app = (function () {
     			button1.textContent = "Delete Item";
     			attr_dev(button0, "class", "primary md");
     			button0.disabled = /*sending*/ ctx[8];
-    			add_location(button0, file$g, 113, 4, 3525);
+    			add_location(button0, file$g, 124, 4, 4041);
     			attr_dev(button1, "class", "secondary md");
-    			add_location(button1, file$g, 114, 4, 3614);
+    			add_location(button1, file$g, 125, 4, 4130);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button0, anchor);
@@ -7547,8 +7621,8 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(button0, "click", /*update*/ ctx[10], false, false, false),
-    					listen_dev(button1, "click", /*delSection*/ ctx[11], false, false, false)
+    					listen_dev(button0, "click", /*update*/ ctx[11], false, false, false),
+    					listen_dev(button1, "click", /*delSection*/ ctx[12], false, false, false)
     				];
 
     				mounted = true;
@@ -7572,14 +7646,14 @@ var app = (function () {
     		block,
     		id: create_else_block$3.name,
     		type: "else",
-    		source: "(113:4) {:else}",
+    		source: "(124:4) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (111:4) {#if !item.id}
+    // (122:4) {#if !item.id}
     function create_if_block$8(ctx) {
     	let button;
     	let t;
@@ -7592,14 +7666,14 @@ var app = (function () {
     			t = text("Add Item");
     			attr_dev(button, "class", "primary md");
     			button.disabled = /*sending*/ ctx[8];
-    			add_location(button, file$g, 111, 4, 3430);
+    			add_location(button, file$g, 122, 4, 3946);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
     			append_dev(button, t);
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*add*/ ctx[9], false, false, false);
+    				dispose = listen_dev(button, "click", /*add*/ ctx[10], false, false, false);
     				mounted = true;
     			}
     		},
@@ -7619,7 +7693,7 @@ var app = (function () {
     		block,
     		id: create_if_block$8.name,
     		type: "if",
-    		source: "(111:4) {#if !item.id}",
+    		source: "(122:4) {#if !item.id}",
     		ctx
     	});
 
@@ -7652,18 +7726,21 @@ var app = (function () {
     	let t12;
     	let input1;
     	let t13;
-    	let switch0;
-    	let updating_set;
+    	let select;
     	let t14;
     	let p2;
     	let t15_value = /*errors*/ ctx[7].price + "";
     	let t15;
     	let t16;
-    	let div3;
+    	let p3;
+    	let t17_value = /*errors*/ ctx[7].vat + "";
     	let t17;
-    	let switch1;
-    	let updating_set_1;
     	let t18;
+    	let div3;
+    	let t19;
+    	let switch_1;
+    	let updating_set;
+    	let t20;
     	let div4;
     	let current;
     	let mounted;
@@ -7676,32 +7753,26 @@ var app = (function () {
 
     	let current_block_type = select_block_type(ctx);
     	let if_block0 = current_block_type(ctx);
+    	let each_value = /*vatOptions*/ ctx[9];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
 
-    	function switch0_set_binding(value) {
-    		/*switch0_set_binding*/ ctx[17].call(null, value);
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block$7(get_each_context$7(ctx, each_value, i));
     	}
 
-    	let switch0_props = {};
-
-    	if (/*vat*/ ctx[4] !== void 0) {
-    		switch0_props.set = /*vat*/ ctx[4];
+    	function switch_1_set_binding(value) {
+    		/*switch_1_set_binding*/ ctx[19].call(null, value);
     	}
 
-    	switch0 = new Switch({ props: switch0_props, $$inline: true });
-    	binding_callbacks.push(() => bind(switch0, "set", switch0_set_binding));
-
-    	function switch1_set_binding(value) {
-    		/*switch1_set_binding*/ ctx[18].call(null, value);
-    	}
-
-    	let switch1_props = {};
+    	let switch_1_props = {};
 
     	if (/*visible*/ ctx[5] !== void 0) {
-    		switch1_props.set = /*visible*/ ctx[5];
+    		switch_1_props.set = /*visible*/ ctx[5];
     	}
 
-    	switch1 = new Switch({ props: switch1_props, $$inline: true });
-    	binding_callbacks.push(() => bind(switch1, "set", switch1_set_binding));
+    	switch_1 = new Switch({ props: switch_1_props, $$inline: true });
+    	binding_callbacks.push(() => bind(switch_1, "set", switch_1_set_binding));
 
     	function select_block_type_1(ctx, dirty) {
     		if (!/*item*/ ctx[0].id) return create_if_block$8;
@@ -7740,62 +7811,75 @@ var app = (function () {
     			label2.textContent = "Price:";
     			t12 = text("\n    £");
     			input1 = element("input");
-    			t13 = text("\n    Vat: ");
-    			create_component(switch0.$$.fragment);
+    			t13 = text("\n    Vat:\n    ");
+    			select = element("select");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
     			t14 = space();
     			p2 = element("p");
     			t15 = text(t15_value);
     			t16 = space();
-    			div3 = element("div");
-    			t17 = text("Visible: ");
-    			create_component(switch1.$$.fragment);
+    			p3 = element("p");
+    			t17 = text(t17_value);
     			t18 = space();
+    			div3 = element("div");
+    			t19 = text("Visible: ");
+    			create_component(switch_1.$$.fragment);
+    			t20 = space();
     			div4 = element("div");
     			if_block1.c();
     			attr_dev(p0, "class", "error svelte-1a4j597");
     			toggle_class(p0, "show", /*error*/ ctx[6]);
-    			add_location(p0, file$g, 88, 2, 2522);
+    			add_location(p0, file$g, 91, 2, 2835);
     			attr_dev(label0, "for", "name");
     			attr_dev(label0, "class", "svelte-1a4j597");
-    			add_location(label0, file$g, 91, 6, 2646);
+    			add_location(label0, file$g, 94, 6, 2959);
     			attr_dev(input0, "id", "name");
     			attr_dev(input0, "type", "text");
     			input0.required = true;
     			attr_dev(input0, "class", "svelte-1a4j597");
     			toggle_class(input0, "invalid", /*errors*/ ctx[7].name);
-    			add_location(input0, file$g, 92, 6, 2689);
+    			add_location(input0, file$g, 95, 6, 3002);
     			attr_dev(div0, "class", "name svelte-1a4j597");
-    			add_location(div0, file$g, 90, 4, 2621);
+    			add_location(div0, file$g, 93, 4, 2934);
     			attr_dev(p1, "class", "error svelte-1a4j597");
     			toggle_class(p1, "show", /*errors*/ ctx[7].name);
-    			add_location(p1, file$g, 94, 4, 2826);
+    			add_location(p1, file$g, 97, 4, 3139);
     			attr_dev(label1, "for", "description");
     			attr_dev(label1, "class", "svelte-1a4j597");
-    			add_location(label1, file$g, 96, 4, 2918);
+    			add_location(label1, file$g, 99, 4, 3231);
     			attr_dev(textarea, "id", "description");
     			attr_dev(textarea, "class", "svelte-1a4j597");
-    			add_location(textarea, file$g, 97, 4, 2968);
+    			add_location(textarea, file$g, 100, 4, 3281);
     			attr_dev(div1, "class", "description svelte-1a4j597");
-    			add_location(div1, file$g, 95, 2, 2888);
+    			add_location(div1, file$g, 98, 2, 3201);
     			attr_dev(label2, "for", "price");
     			attr_dev(label2, "class", "svelte-1a4j597");
-    			add_location(label2, file$g, 100, 4, 3067);
+    			add_location(label2, file$g, 103, 4, 3380);
     			attr_dev(input1, "type", "number");
     			attr_dev(input1, "id", "price");
     			attr_dev(input1, "class", "svelte-1a4j597");
     			toggle_class(input1, "invalid", /*errors*/ ctx[7].price);
-    			add_location(input1, file$g, 101, 5, 3106);
+    			add_location(input1, file$g, 104, 5, 3419);
+    			if (/*vatChoice*/ ctx[4] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[18].call(select));
+    			add_location(select, file$g, 106, 4, 3513);
     			attr_dev(p2, "class", "error svelte-1a4j597");
     			toggle_class(p2, "show", /*errors*/ ctx[7].price);
-    			add_location(p2, file$g, 103, 4, 3226);
+    			add_location(p2, file$g, 113, 4, 3680);
+    			attr_dev(p3, "class", "error svelte-1a4j597");
+    			toggle_class(p3, "show", /*errors*/ ctx[7].vat);
+    			add_location(p3, file$g, 114, 4, 3746);
     			attr_dev(div2, "class", "price svelte-1a4j597");
-    			add_location(div2, file$g, 99, 2, 3043);
-    			add_location(form, file$g, 89, 2, 2572);
+    			add_location(div2, file$g, 102, 2, 3356);
+    			add_location(form, file$g, 92, 2, 2885);
     			attr_dev(div3, "class", "visible svelte-1a4j597");
-    			add_location(div3, file$g, 106, 2, 3309);
+    			add_location(div3, file$g, 117, 2, 3825);
     			attr_dev(div4, "class", "buttons svelte-1a4j597");
-    			add_location(div4, file$g, 109, 2, 3385);
-    			add_location(div5, file$g, 82, 0, 2436);
+    			add_location(div4, file$g, 120, 2, 3901);
+    			add_location(div5, file$g, 85, 0, 2749);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -7829,25 +7913,35 @@ var app = (function () {
     			append_dev(div2, input1);
     			set_input_value(input1, /*price*/ ctx[3]);
     			append_dev(div2, t13);
-    			mount_component(switch0, div2, null);
+    			append_dev(div2, select);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(select, null);
+    			}
+
+    			select_option(select, /*vatChoice*/ ctx[4]);
     			append_dev(div2, t14);
     			append_dev(div2, p2);
     			append_dev(p2, t15);
-    			append_dev(div5, t16);
-    			append_dev(div5, div3);
-    			append_dev(div3, t17);
-    			mount_component(switch1, div3, null);
+    			append_dev(div2, t16);
+    			append_dev(div2, p3);
+    			append_dev(p3, t17);
     			append_dev(div5, t18);
+    			append_dev(div5, div3);
+    			append_dev(div3, t19);
+    			mount_component(switch_1, div3, null);
+    			append_dev(div5, t20);
     			append_dev(div5, div4);
     			if_block1.m(div4, null);
     			current = true;
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[13]),
-    					listen_dev(input0, "input", /*input_handler*/ ctx[14], false, false, false),
-    					listen_dev(textarea, "input", /*textarea_input_handler*/ ctx[15]),
-    					listen_dev(input1, "input", /*input1_input_handler*/ ctx[16]),
+    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[14]),
+    					listen_dev(input0, "input", /*input_handler*/ ctx[15], false, false, false),
+    					listen_dev(textarea, "input", /*textarea_input_handler*/ ctx[16]),
+    					listen_dev(input1, "input", /*input1_input_handler*/ ctx[17]),
+    					listen_dev(select, "change", /*select_change_handler*/ ctx[18]),
     					listen_dev(form, "submit", prevent_default(submit_handler$1), false, true, false)
     				];
 
@@ -7899,30 +7993,55 @@ var app = (function () {
     				toggle_class(input1, "invalid", /*errors*/ ctx[7].price);
     			}
 
-    			const switch0_changes = {};
+    			if (dirty & /*vatOptions*/ 512) {
+    				each_value = /*vatOptions*/ ctx[9];
+    				validate_each_argument(each_value);
+    				let i;
 
-    			if (!updating_set && dirty & /*vat*/ 16) {
-    				updating_set = true;
-    				switch0_changes.set = /*vat*/ ctx[4];
-    				add_flush_callback(() => updating_set = false);
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$7(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block$7(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(select, null);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value.length;
     			}
 
-    			switch0.$set(switch0_changes);
+    			if (dirty & /*vatChoice, vatOptions*/ 528) {
+    				select_option(select, /*vatChoice*/ ctx[4]);
+    			}
+
     			if ((!current || dirty & /*errors*/ 128) && t15_value !== (t15_value = /*errors*/ ctx[7].price + "")) set_data_dev(t15, t15_value);
 
     			if (dirty & /*errors*/ 128) {
     				toggle_class(p2, "show", /*errors*/ ctx[7].price);
     			}
 
-    			const switch1_changes = {};
+    			if ((!current || dirty & /*errors*/ 128) && t17_value !== (t17_value = /*errors*/ ctx[7].vat + "")) set_data_dev(t17, t17_value);
 
-    			if (!updating_set_1 && dirty & /*visible*/ 32) {
-    				updating_set_1 = true;
-    				switch1_changes.set = /*visible*/ ctx[5];
-    				add_flush_callback(() => updating_set_1 = false);
+    			if (dirty & /*errors*/ 128) {
+    				toggle_class(p3, "show", /*errors*/ ctx[7].vat);
     			}
 
-    			switch1.$set(switch1_changes);
+    			const switch_1_changes = {};
+
+    			if (!updating_set && dirty & /*visible*/ 32) {
+    				updating_set = true;
+    				switch_1_changes.set = /*visible*/ ctx[5];
+    				add_flush_callback(() => updating_set = false);
+    			}
+
+    			switch_1.$set(switch_1_changes);
 
     			if (current_block_type_1 === (current_block_type_1 = select_block_type_1(ctx)) && if_block1) {
     				if_block1.p(ctx, dirty);
@@ -7938,20 +8057,18 @@ var app = (function () {
     		},
     		i: function intro(local) {
     			if (current) return;
-    			transition_in(switch0.$$.fragment, local);
-    			transition_in(switch1.$$.fragment, local);
+    			transition_in(switch_1.$$.fragment, local);
     			current = true;
     		},
     		o: function outro(local) {
-    			transition_out(switch0.$$.fragment, local);
-    			transition_out(switch1.$$.fragment, local);
+    			transition_out(switch_1.$$.fragment, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div5);
     			if_block0.d();
-    			destroy_component(switch0);
-    			destroy_component(switch1);
+    			destroy_each(each_blocks, detaching);
+    			destroy_component(switch_1);
     			if_block1.d();
     			mounted = false;
     			run_all(dispose);
@@ -7977,7 +8094,12 @@ var app = (function () {
     	let { item = {} } = $$props;
     	let { section = false } = $$props;
     	const dispatch = createEventDispatcher();
-    	let name, description, price, vat, visible;
+
+    	const vatOptions = Date.now() > Date(2021, 0, 12)
+    	? [{ val: 0, text: "0%" }, { val: 0.2, text: "20%" }]
+    	: [{ val: 0, text: "0%" }, { val: 0.05, text: "5%" }, { val: 0.2, text: "20%" }];
+
+    	let name, description, price, vatChoice, visible;
     	let error = false;
     	let errors = {};
     	let sending = false;
@@ -7987,10 +8109,11 @@ var app = (function () {
     			$$invalidate(1, name = "");
     			$$invalidate(2, description = "");
     			$$invalidate(3, price = "0.00");
-    			$$invalidate(4, vat = true);
+    			$$invalidate(4, vatChoice = vatOptions[0]);
     			$$invalidate(5, visible = true);
     		} else {
-    			$$invalidate(1, { name, description, price, vat, visible } = item, name, $$invalidate(2, description), $$invalidate(3, price), $$invalidate(4, vat), $$invalidate(5, visible));
+    			$$invalidate(1, { name, description, price, visible } = item, name, $$invalidate(2, description), $$invalidate(3, price), $$invalidate(5, visible));
+    			$$invalidate(4, vatChoice = vatOptions.find(option => option.val === item.vat) || vatOptions[1]);
     		}
     	});
 
@@ -8001,9 +8124,9 @@ var app = (function () {
     			name,
     			description,
     			price,
-    			vat,
     			visible,
-    			section: section.id
+    			section: section.id,
+    			vat: vatChoice.val
     		}).then(response => {
     			if (response.status === 200 || response.status === 400) return response.json();
 
@@ -8019,7 +8142,7 @@ var app = (function () {
     				data.sectionId = section.id;
     				dispatch("update", { "item": data });
     				$$invalidate(0, item = data);
-    				$$invalidate(1, { name, description, price, vat, visible } = data, name, $$invalidate(2, description), $$invalidate(3, price), $$invalidate(4, vat), $$invalidate(5, visible));
+    				$$invalidate(1, { name, description, price, vat, visible } = data, name, $$invalidate(2, description), $$invalidate(3, price), $$invalidate(5, visible));
     			}
 
     			$$invalidate(8, sending = false);
@@ -8027,7 +8150,13 @@ var app = (function () {
     	}
 
     	function update() {
-    		patch("/menu/items/" + item.id + "/", { name, description, price, vat, visible }).then(response => {
+    		patch("/menu/items/" + item.id + "/", {
+    			name,
+    			description,
+    			price,
+    			visible,
+    			vat: vatChoice.val
+    		}).then(response => {
     			if (response.status === 200 || response.status === 400) return response.json();
     			if (response.status === 403) $$invalidate(6, error = "You are not allowed to update items.");
     			if (response.status === 404) $$invalidate(6, error = "Item not found.");
@@ -8041,7 +8170,7 @@ var app = (function () {
     					data.sectionId = section.id;
     					dispatch("update", { "item": data });
     					$$invalidate(0, item = data);
-    					$$invalidate(1, { name, description, price, vat, visible } = data, name, $$invalidate(2, description), $$invalidate(3, price), $$invalidate(4, vat), $$invalidate(5, visible));
+    					$$invalidate(1, { name, description, price, vat, visible } = data, name, $$invalidate(2, description), $$invalidate(3, price), $$invalidate(5, visible));
     				}
     			}
 
@@ -8089,19 +8218,20 @@ var app = (function () {
     		$$invalidate(3, price);
     	}
 
-    	function switch0_set_binding(value) {
-    		vat = value;
-    		$$invalidate(4, vat);
+    	function select_change_handler() {
+    		vatChoice = select_value(this);
+    		$$invalidate(4, vatChoice);
+    		$$invalidate(9, vatOptions);
     	}
 
-    	function switch1_set_binding(value) {
+    	function switch_1_set_binding(value) {
     		visible = value;
     		$$invalidate(5, visible);
     	}
 
     	$$self.$set = $$props => {
     		if ("item" in $$props) $$invalidate(0, item = $$props.item);
-    		if ("section" in $$props) $$invalidate(12, section = $$props.section);
+    		if ("section" in $$props) $$invalidate(13, section = $$props.section);
     	};
 
     	$$self.$capture_state = () => ({
@@ -8115,10 +8245,11 @@ var app = (function () {
     		item,
     		section,
     		dispatch,
+    		vatOptions,
     		name,
     		description,
     		price,
-    		vat,
+    		vatChoice,
     		visible,
     		error,
     		errors,
@@ -8130,11 +8261,11 @@ var app = (function () {
 
     	$$self.$inject_state = $$props => {
     		if ("item" in $$props) $$invalidate(0, item = $$props.item);
-    		if ("section" in $$props) $$invalidate(12, section = $$props.section);
+    		if ("section" in $$props) $$invalidate(13, section = $$props.section);
     		if ("name" in $$props) $$invalidate(1, name = $$props.name);
     		if ("description" in $$props) $$invalidate(2, description = $$props.description);
     		if ("price" in $$props) $$invalidate(3, price = $$props.price);
-    		if ("vat" in $$props) $$invalidate(4, vat = $$props.vat);
+    		if ("vatChoice" in $$props) $$invalidate(4, vatChoice = $$props.vatChoice);
     		if ("visible" in $$props) $$invalidate(5, visible = $$props.visible);
     		if ("error" in $$props) $$invalidate(6, error = $$props.error);
     		if ("errors" in $$props) $$invalidate(7, errors = $$props.errors);
@@ -8150,11 +8281,12 @@ var app = (function () {
     		name,
     		description,
     		price,
-    		vat,
+    		vatChoice,
     		visible,
     		error,
     		errors,
     		sending,
+    		vatOptions,
     		add,
     		update,
     		delSection,
@@ -8163,15 +8295,15 @@ var app = (function () {
     		input_handler,
     		textarea_input_handler,
     		input1_input_handler,
-    		switch0_set_binding,
-    		switch1_set_binding
+    		select_change_handler,
+    		switch_1_set_binding
     	];
     }
 
     class MenuItemUpdate extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$g, create_fragment$g, safe_not_equal, { item: 0, section: 12 });
+    		init(this, options, instance$g, create_fragment$g, safe_not_equal, { item: 0, section: 13 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -8212,7 +8344,7 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "class", "description");
-    			add_location(p, file$h, 13, 4, 350);
+    			add_location(p, file$h, 13, 4, 338);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -8244,24 +8376,21 @@ var app = (function () {
     	let t0_value = /*item*/ ctx[0].name + "";
     	let t0;
     	let t1;
-    	let t2_value = /*item*/ ctx[0].id + "";
     	let t2;
-    	let t3;
-    	let t4;
     	let div1;
+    	let t3;
+    	let t4_value = Number.parseFloat(/*item*/ ctx[0].price).toFixed(2) + "";
+    	let t4;
     	let t5;
-    	let t6_value = Number.parseFloat(/*item*/ ctx[0].price).toFixed(2) + "";
-    	let t6;
-    	let t7;
     	let div2;
     	let button0;
-    	let t9;
+    	let t7;
     	let div3;
     	let button1;
-    	let t10;
-    	let t11;
+    	let t8;
+    	let t9;
     	let button2;
-    	let t12;
+    	let t10;
     	let mounted;
     	let dispose;
     	let if_block = /*item*/ ctx[0].description && create_if_block$9(ctx);
@@ -8272,42 +8401,40 @@ var app = (function () {
     			div0 = element("div");
     			h4 = element("h4");
     			t0 = text(t0_value);
-    			t1 = text(" - ");
-    			t2 = text(t2_value);
-    			t3 = space();
+    			t1 = space();
     			if (if_block) if_block.c();
-    			t4 = space();
+    			t2 = space();
     			div1 = element("div");
-    			t5 = text("£");
-    			t6 = text(t6_value);
-    			t7 = space();
+    			t3 = text("£");
+    			t4 = text(t4_value);
+    			t5 = space();
     			div2 = element("div");
     			button0 = element("button");
     			button0.textContent = "Edit";
-    			t9 = space();
+    			t7 = space();
     			div3 = element("div");
     			button1 = element("button");
-    			t10 = text("+");
-    			t11 = space();
+    			t8 = text("+");
+    			t9 = space();
     			button2 = element("button");
-    			t12 = text("-");
+    			t10 = text("-");
     			attr_dev(h4, "class", "name svelte-lun6nw");
     			add_location(h4, file$h, 11, 4, 273);
     			attr_dev(div0, "class", "details svelte-lun6nw");
     			add_location(div0, file$h, 10, 2, 247);
     			attr_dev(div1, "class", "price svelte-lun6nw");
-    			add_location(div1, file$h, 16, 2, 417);
+    			add_location(div1, file$h, 16, 2, 405);
     			attr_dev(button0, "class", "primary md");
-    			add_location(button0, file$h, 20, 4, 506);
-    			add_location(div2, file$h, 19, 2, 496);
+    			add_location(button0, file$h, 20, 4, 494);
+    			add_location(div2, file$h, 19, 2, 484);
     			attr_dev(button1, "class", "primary svelte-lun6nw");
     			button1.disabled = /*first*/ ctx[1];
-    			add_location(button1, file$h, 23, 4, 630);
+    			add_location(button1, file$h, 23, 4, 618);
     			attr_dev(button2, "class", "primary svelte-lun6nw");
     			button2.disabled = /*last*/ ctx[2];
-    			add_location(button2, file$h, 24, 4, 724);
+    			add_location(button2, file$h, 24, 4, 712);
     			attr_dev(div3, "class", "up-down svelte-lun6nw");
-    			add_location(div3, file$h, 22, 2, 604);
+    			add_location(div3, file$h, 22, 2, 592);
     			attr_dev(div4, "class", "striped svelte-lun6nw");
     			toggle_class(div4, "hidden", !/*item*/ ctx[0].visible);
     			add_location(div4, file$h, 9, 0, 194);
@@ -8320,24 +8447,22 @@ var app = (function () {
     			append_dev(div4, div0);
     			append_dev(div0, h4);
     			append_dev(h4, t0);
-    			append_dev(h4, t1);
-    			append_dev(h4, t2);
-    			append_dev(div0, t3);
+    			append_dev(div0, t1);
     			if (if_block) if_block.m(div0, null);
-    			append_dev(div4, t4);
+    			append_dev(div4, t2);
     			append_dev(div4, div1);
-    			append_dev(div1, t5);
-    			append_dev(div1, t6);
-    			append_dev(div4, t7);
+    			append_dev(div1, t3);
+    			append_dev(div1, t4);
+    			append_dev(div4, t5);
     			append_dev(div4, div2);
     			append_dev(div2, button0);
-    			append_dev(div4, t9);
+    			append_dev(div4, t7);
     			append_dev(div4, div3);
     			append_dev(div3, button1);
-    			append_dev(button1, t10);
-    			append_dev(div3, t11);
+    			append_dev(button1, t8);
+    			append_dev(div3, t9);
     			append_dev(div3, button2);
-    			append_dev(button2, t12);
+    			append_dev(button2, t10);
 
     			if (!mounted) {
     				dispose = [
@@ -8351,7 +8476,6 @@ var app = (function () {
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*item*/ 1 && t0_value !== (t0_value = /*item*/ ctx[0].name + "")) set_data_dev(t0, t0_value);
-    			if (dirty & /*item*/ 1 && t2_value !== (t2_value = /*item*/ ctx[0].id + "")) set_data_dev(t2, t2_value);
 
     			if (/*item*/ ctx[0].description) {
     				if (if_block) {
@@ -8366,7 +8490,7 @@ var app = (function () {
     				if_block = null;
     			}
 
-    			if (dirty & /*item*/ 1 && t6_value !== (t6_value = Number.parseFloat(/*item*/ ctx[0].price).toFixed(2) + "")) set_data_dev(t6, t6_value);
+    			if (dirty & /*item*/ 1 && t4_value !== (t4_value = Number.parseFloat(/*item*/ ctx[0].price).toFixed(2) + "")) set_data_dev(t4, t4_value);
 
     			if (dirty & /*first*/ 2) {
     				prop_dev(button1, "disabled", /*first*/ ctx[1]);
@@ -8495,7 +8619,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    function get_each_context$7(ctx, list, i) {
+    function get_each_context$8(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[22] = list[i];
     	child_ctx[24] = i;
@@ -8533,12 +8657,12 @@ var app = (function () {
     	let each_value = /*sections*/ ctx[21];
     	validate_each_argument(each_value);
     	const get_key = ctx => /*section*/ ctx[22].id;
-    	validate_each_keys(ctx, each_value, get_each_context$7, get_key);
+    	validate_each_keys(ctx, each_value, get_each_context$8, get_key);
 
     	for (let i = 0; i < each_value.length; i += 1) {
-    		let child_ctx = get_each_context$7(ctx, each_value, i);
+    		let child_ctx = get_each_context$8(ctx, each_value, i);
     		let key = get_key(child_ctx);
-    		each_1_lookup.set(key, each_blocks[i] = create_each_block$7(key, child_ctx));
+    		each_1_lookup.set(key, each_blocks[i] = create_each_block$8(key, child_ctx));
     	}
 
     	const block = {
@@ -8562,8 +8686,8 @@ var app = (function () {
     				const each_value = /*sections*/ ctx[21];
     				validate_each_argument(each_value);
     				group_outros();
-    				validate_each_keys(ctx, each_value, get_each_context$7, get_key);
-    				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, each_1_anchor.parentNode, outro_and_destroy_block, create_each_block$7, each_1_anchor, get_each_context$7);
+    				validate_each_keys(ctx, each_value, get_each_context$8, get_key);
+    				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, each_1_anchor.parentNode, outro_and_destroy_block, create_each_block$8, each_1_anchor, get_each_context$8);
     				check_outros();
     			}
     		},
@@ -8682,7 +8806,7 @@ var app = (function () {
     }
 
     // (130:4) {#each sections as section, i (section.id)}
-    function create_each_block$7(key_1, ctx) {
+    function create_each_block$8(key_1, ctx) {
     	let div6;
     	let div3;
     	let div0;
@@ -8906,7 +9030,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block$7.name,
+    		id: create_each_block$8.name,
     		type: "each",
     		source: "(130:4) {#each sections as section, i (section.id)}",
     		ctx

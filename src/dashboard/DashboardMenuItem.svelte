@@ -9,7 +9,7 @@
 
 <div class="striped" class:hidden={!item.visible}>
   <div class="details">
-    <h4 class="name">{item.name} - {item.id}</h4>
+    <h4 class="name">{item.name}</h4>
     {#if item.description}
     <p class="description">{item.description}</p>
     {/if}

@@ -9,4 +9,4 @@ class OrderItemForm(ModelForm):
 
     class Meta:
         model = OrderItem
-        exclude = ('total', 'order',)
+        exclude = ('total', 'vat_total', 'order',)

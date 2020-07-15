@@ -7,7 +7,9 @@
 
   const dispatch = createEventDispatcher();
 
-  let name, description, price, vat, visible;
+  const vatOptions = Date.now() > Date(2021, 0, 12) ? [{val: 0, text: '0%'}, {val: 0.2, text: '20%'}] :  [{val: 0, text: '0%'}, {val: 0.05, text: '5%'}, {val: 0.2, text: '20%'}];
+
+  let name, description, price, vatChoice, visible;
   let error = false;
   let errors = {};
   let sending = false;
@@ -16,16 +18,17 @@
       name = '';
       description = '';
       price = '0.00';
-      vat = true;
+      vatChoice = vatOptions[0];
       visible = true;
     } else {
-      ({name, description, price, vat, visible} = item);
+      ({name, description, price, visible} = item);
+      vatChoice = vatOptions.find(option => option.val === item.vat) || vatOptions[1];
     }
   })
 
   function add() {
     sending = true;
-    post('/menu/items/', {name, description, price, vat, visible, section: section.id}).then(response => {
+    post('/menu/items/', {name, description, price, visible, section: section.id, vat: vatChoice.val}).then(response => {
       if (response.status === 200 || response.status === 400) return response.json();
       if (response.status === 403) {
         error = 'You are not allowed to add new items';
@@ -47,7 +50,7 @@
   }
 
   function update() {
-    patch('/menu/items/' + item.id + '/', {name, description, price, vat, visible}).then(response => {
+    patch('/menu/items/' + item.id + '/', {name, description, price, visible, vat: vatChoice.val}).then(response => {
       if (response.status === 200 || response.status === 400) return response.json();
       if (response.status === 403) error = 'You are not allowed to update items.';
       if (response.status === 404) error = 'Item not found.';
@@ -100,8 +103,16 @@
   <div class="price">
     <label for="price">Price:</label>
     £<input type="number" id="price" bind:value={price} class:invalid={errors.price}>
-    Vat: <Switch bind:set={vat} />
+    Vat:
+    <select bind:value={vatChoice}>
+      {#each vatOptions as option}
+      <option value={option}>
+        {option.text}
+      </option>
+      {/each}
+    </select>
     <p class="error" class:show={errors.price}>{errors.price}</p>
+    <p class="error" class:show={errors.vat}>{errors.vat}</p>
   </div>
   </form>
   <div class="visible">

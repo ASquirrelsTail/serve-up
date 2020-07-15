@@ -40,7 +40,7 @@ $ pip install -r requirements.txt
 Launch the wsgi server by running serveup.py. This will automatically do any first time set up, and open the admin interface.
 
 ```
-$ python3 serveup.py
+$ python3 serve_up.py
 ```
 
 From there you can add additional users and access the dashboard.

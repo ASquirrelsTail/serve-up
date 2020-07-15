@@ -3,7 +3,7 @@ from django.db.models.signals import post_save, pre_delete
 import os
 import qrcode
 from uuid import uuid4
-from serveup.settings import IP, PORT, STATIC_ROOT, STATIC_URL
+from django.conf import settings
 
 
 def createUUID():
@@ -19,23 +19,23 @@ class Table(models.Model):
 
     @property
     def img(self):
-        return '{}qrcodes/{}.png'.format(STATIC_URL, self.uuid)
+        return '{}qrcodes/{}.png'.format(settings.STATIC_URL, self.uuid)
 
     @classmethod
     def post_create(cls, sender, instance, created, *args, **kwargs):
         if created:
-            path = os.path.join(STATIC_ROOT[0], 'qrcodes', '{}.png'.format(instance.uuid))
+            path = os.path.join(settings.STATIC_ROOT, 'qrcodes', '{}.png'.format(instance.uuid))
             qrcode.make(instance.url).save(path, 'PNG')
 
     @classmethod
     def pre_delete(cls, sender, instance, *args, **kwargs):
-        path = os.path.join(STATIC_ROOT[0], 'qrcodes', '{}.png'.format(instance.uuid))
+        path = os.path.join(settings.STATIC_ROOT, 'qrcodes', '{}.png'.format(instance.uuid))
         if os.path.exists(path):
             os.remove(path)
 
     @property
     def url(self):
-        return 'http://{}:{}/{}/'.format(IP, PORT, self.uuid)
+        return 'http://{}:{}/{}/'.format(settings.IP, settings.PORT, self.uuid)
 
 
 post_save.connect(Table.post_create, sender=Table)

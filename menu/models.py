@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.signals import post_save
+from datetime import date
 
 
 class MenuModel(models.Model):
@@ -33,8 +34,10 @@ class MenuModel(models.Model):
 
 
 class Item(MenuModel):
+    VAT_CHOICES = [(0, '0%'), (0.2, '20%')] if date.today() > date(2021, 1, 12) else [(0, '0%'), (0.2, '20%'), (0.05, '5%')]
+
     price = models.DecimalField(default=0.00, max_digits=5, decimal_places=2, help_text='Including VAT if applicable.')
-    vat = models.BooleanField(default=True)
+    vat = models.FloatField(default=0, choices=VAT_CHOICES)
     section = models.ForeignKey('menu.Section', null=True, blank=True, default=None, on_delete=models.SET_NULL)
 
     def __str__(self):

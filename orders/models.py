@@ -25,11 +25,8 @@ class Order(models.Model):
 
     @property
     def vat_total(self):
-        total = self.orderitem_set.filter(item__vat=True).aggregate(models.Sum('total'))['total__sum']
-        if total:
-            return '{:.2f}'.format(total * Decimal(0.2))
-        else:
-            return '0.00'
+        total = self.orderitem_set.aggregate(models.Sum('vat_total'))['vat_total__sum']
+        return '{:.2f}'.format(total) if total else '0.00'
 
     @property
     def no_items(self):
@@ -60,11 +57,13 @@ class OrderItem(models.Model):
     item = models.ForeignKey('menu.Item', on_delete=models.SET_NULL, null=True, blank=True)
     count = models.PositiveIntegerField(validators=[MinValueValidator(1)], default=1)
     total = models.DecimalField(default=0.00, max_digits=5, decimal_places=2)
+    vat_total = models.DecimalField(default=0.00, max_digits=5, decimal_places=2)
     order = models.ForeignKey('orders.Order', on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):
         if not self.order.paid and self.item:
             self.total = self.item.price * self.count
+            self.vat_total = self.total * Decimal.from_float(self.item.vat)
         return super(OrderItem, self).save(*args, **kwargs)
 
     def __str__(self):
