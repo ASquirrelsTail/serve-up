@@ -11,9 +11,10 @@ A windows executable can be downloaded [here](https://serve-up.s3.eu-west-2.amaz
 ## Features
 
 - QR Codes generated for each table, so customers simply log on to your wifi and scan the code to begin.
-- Groups register their details to be shared with NHS Track and Trace if necessary.
+- Groups register their details to be shared with NHS Track and Trace if necessary, this information is deleted after 21 days.
 - A simple web app lets customers browse the menu and place their order from their table.
 - A dashboard for employees allows them to manage orders, tables and alter the menu from their mobile device or a computer.
+- Supports new 5% VAT rate for the hospitality industry until 12th Jan 2021.
 
 ## To Do
 

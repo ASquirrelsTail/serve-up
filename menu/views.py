@@ -85,7 +85,7 @@ class MenuItemsView(LoginRequiredMixin, View):
     raise_exception = True
 
     def post(self, request):
-        if not request.user.has_perm('menu.add_section'):
+        if not request.user.has_perm('menu.view_item'):
             raise PermissionDenied
 
         data = json.loads(request.body)
@@ -117,7 +117,7 @@ class MenuItemEditView(SingleObjectMixin, LoginRequiredMixin, View):
         return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
 
     def patch(self, request, **kwargs):
-        if not request.user.has_perm('menu.change_section'):
+        if not request.user.has_perm('menu.change_item'):
             raise PermissionDenied
 
         item = self.get_object()

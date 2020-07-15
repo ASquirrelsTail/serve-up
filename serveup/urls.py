@@ -19,7 +19,7 @@ from django.views.generic.base import TemplateView
 from visitors.views import GroupView
 from orders.views import TableOrderView, DailyOrdersView, DashboardView, OrderView
 from tables.views import TablesView, TableEditView
-from admin.views import TokenLoginView
+from serve_admin.views import TokenLoginView
 from menu.views import MenuView, MenuItemsView, MenuSectionsView, MenuItemEditView, MenuSectionEditView
 
 menu_urls = [

@@ -13,6 +13,8 @@ pyinst_args = [
     '--hidden-import=tables.admin',
     '--hidden-import=orders.admin',
     '--hidden-import=menu.admin',
+    '--hidden-import=serve_admin.management.commands.createdefaultgroup',
+    '--hidden-import=visitors.management.commands.deleteoldvisitors',
     '--clean',
 ]
 
