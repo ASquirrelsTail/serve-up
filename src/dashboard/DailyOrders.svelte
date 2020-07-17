@@ -1,4 +1,5 @@
 <script>
+  import { onDestroy } from 'svelte';
   import Review from '../Review.svelte';
   import OrderList from './OrderList.svelte';
   import OrderReview from '../order/OrderReview.svelte';
@@ -7,16 +8,13 @@
   let review = false;
   let sending = false;
 
+  let todaysOrders = refresh();
 
+  const interval = setInterval(refresh, 1000)
 
-  let todaysOrders = fetch('/orders/')
-                    .then(toData)
-                    .then(data => data.orders);
-
-  $: {
-    if (review) document.body.style = 'overflow: hidden;';
-    else document.body.style = '';
-  }
+  onDestroy(() => {
+    clearInterval(interval);
+  });
 
   function editOrder(e) {
     review = e.detail;
@@ -42,6 +40,19 @@
         todaysOrders = todaysOrders;
         review = updatedOrder;
       });
+  }
+
+  function refresh() {
+    if (!sending) {
+      const updatedOrders = fetch('/orders/')
+                              .then(toData)
+                              .then(data => data.orders)
+                              .then(orders => {
+        todaysOrders = updatedOrders;
+        return orders;
+      });
+      return updatedOrders;
+    }
   }
 </script>
 

@@ -11,7 +11,6 @@
   let menuItems = fetch('/menu/')
                     .then(response => response.json())
                     .then(data => {
-                      console.log(data.sections)
                       return data.sections});
 
   function openSectionUpdate(section={}) {
@@ -38,7 +37,6 @@
   }
 
   function updateItemOrSection(e) {
-    console.log(e.detail)
     if (e.detail.section) menuItems = menuItems.then(sections => {
       review = false;
       const index = sections.findIndex(section => section.id === e.detail.section.id);

@@ -328,6 +328,9 @@ var app = (function () {
     function onMount(fn) {
         get_current_component().$$.on_mount.push(fn);
     }
+    function onDestroy(fn) {
+        get_current_component().$$.on_destroy.push(fn);
+    }
     function createEventDispatcher() {
         const component = get_current_component();
         return (type, detail) => {
@@ -4995,7 +4998,7 @@ var app = (function () {
     const { console: console_1$1 } = globals;
     const file$b = "src/dashboard/DailyOrders.svelte";
 
-    // (73:2) {:catch error}
+    // (84:2) {:catch error}
     function create_catch_block$1(ctx) {
     	let p;
 
@@ -5003,7 +5006,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Oops something went wrong when trying to load today's orders!";
-    			add_location(p, file$b, 73, 2, 2256);
+    			add_location(p, file$b, 84, 2, 2548);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -5020,14 +5023,14 @@ var app = (function () {
     		block,
     		id: create_catch_block$1.name,
     		type: "catch",
-    		source: "(73:2) {:catch error}",
+    		source: "(84:2) {:catch error}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (52:2) {:then orders}
+    // (63:2) {:then orders}
     function create_then_block$1(ctx) {
     	let div0;
     	let h30;
@@ -5059,7 +5062,7 @@ var app = (function () {
     	let current;
 
     	orderlist0 = new OrderList({
-    			props: { orders: /*orders*/ ctx[10].filter(func) },
+    			props: { orders: /*orders*/ ctx[12].filter(func) },
     			$$inline: true
     		});
 
@@ -5067,7 +5070,7 @@ var app = (function () {
 
     	orderlist1 = new OrderList({
     			props: {
-    				orders: /*orders*/ ctx[10].filter(func_1)
+    				orders: /*orders*/ ctx[12].filter(func_1)
     			},
     			$$inline: true
     		});
@@ -5076,7 +5079,7 @@ var app = (function () {
 
     	orderlist2 = new OrderList({
     			props: {
-    				orders: /*orders*/ ctx[10].filter(func_2)
+    				orders: /*orders*/ ctx[12].filter(func_2)
     			},
     			$$inline: true
     		});
@@ -5085,7 +5088,7 @@ var app = (function () {
 
     	orderlist3 = new OrderList({
     			props: {
-    				orders: /*orders*/ ctx[10].filter(func_3)
+    				orders: /*orders*/ ctx[12].filter(func_3)
     			},
     			$$inline: true
     		});
@@ -5129,26 +5132,26 @@ var app = (function () {
     			p3.textContent = "These orders have been completed and paid";
     			t18 = space();
     			create_component(orderlist3.$$.fragment);
-    			add_location(h30, file$b, 53, 4, 1365);
+    			add_location(h30, file$b, 64, 4, 1657);
     			attr_dev(p0, "class", "details svelte-1iwfgnh");
-    			add_location(p0, file$b, 54, 4, 1386);
+    			add_location(p0, file$b, 65, 4, 1678);
     			attr_dev(div0, "class", "section");
-    			add_location(div0, file$b, 52, 2, 1339);
-    			add_location(h31, file$b, 58, 4, 1576);
+    			add_location(div0, file$b, 63, 2, 1631);
+    			add_location(h31, file$b, 69, 4, 1868);
     			attr_dev(p1, "class", "details svelte-1iwfgnh");
-    			add_location(p1, file$b, 59, 4, 1598);
+    			add_location(p1, file$b, 70, 4, 1890);
     			attr_dev(div1, "class", "section");
-    			add_location(div1, file$b, 57, 2, 1550);
-    			add_location(h32, file$b, 63, 4, 1803);
+    			add_location(div1, file$b, 68, 2, 1842);
+    			add_location(h32, file$b, 74, 4, 2095);
     			attr_dev(p2, "class", "details svelte-1iwfgnh");
-    			add_location(p2, file$b, 64, 4, 1826);
+    			add_location(p2, file$b, 75, 4, 2118);
     			attr_dev(div2, "class", "section");
-    			add_location(div2, file$b, 62, 2, 1777);
-    			add_location(h33, file$b, 68, 4, 2038);
+    			add_location(div2, file$b, 73, 2, 2069);
+    			add_location(h33, file$b, 79, 4, 2330);
     			attr_dev(p3, "class", "details svelte-1iwfgnh");
-    			add_location(p3, file$b, 69, 4, 2056);
+    			add_location(p3, file$b, 80, 4, 2348);
     			attr_dev(div3, "class", "section");
-    			add_location(div3, file$b, 67, 2, 2012);
+    			add_location(div3, file$b, 78, 2, 2304);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -5182,16 +5185,16 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const orderlist0_changes = {};
-    			if (dirty & /*todaysOrders*/ 4) orderlist0_changes.orders = /*orders*/ ctx[10].filter(func);
+    			if (dirty & /*todaysOrders*/ 4) orderlist0_changes.orders = /*orders*/ ctx[12].filter(func);
     			orderlist0.$set(orderlist0_changes);
     			const orderlist1_changes = {};
-    			if (dirty & /*todaysOrders*/ 4) orderlist1_changes.orders = /*orders*/ ctx[10].filter(func_1);
+    			if (dirty & /*todaysOrders*/ 4) orderlist1_changes.orders = /*orders*/ ctx[12].filter(func_1);
     			orderlist1.$set(orderlist1_changes);
     			const orderlist2_changes = {};
-    			if (dirty & /*todaysOrders*/ 4) orderlist2_changes.orders = /*orders*/ ctx[10].filter(func_2);
+    			if (dirty & /*todaysOrders*/ 4) orderlist2_changes.orders = /*orders*/ ctx[12].filter(func_2);
     			orderlist2.$set(orderlist2_changes);
     			const orderlist3_changes = {};
-    			if (dirty & /*todaysOrders*/ 4) orderlist3_changes.orders = /*orders*/ ctx[10].filter(func_3);
+    			if (dirty & /*todaysOrders*/ 4) orderlist3_changes.orders = /*orders*/ ctx[12].filter(func_3);
     			orderlist3.$set(orderlist3_changes);
     		},
     		i: function intro(local) {
@@ -5228,14 +5231,14 @@ var app = (function () {
     		block,
     		id: create_then_block$1.name,
     		type: "then",
-    		source: "(52:2) {:then orders}",
+    		source: "(63:2) {:then orders}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (50:23)    <p>Loading Orders</p>   {:then orders}
+    // (61:23)    <p>Loading Orders</p>   {:then orders}
     function create_pending_block$1(ctx) {
     	let p;
 
@@ -5243,7 +5246,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Loading Orders";
-    			add_location(p, file$b, 50, 2, 1298);
+    			add_location(p, file$b, 61, 2, 1590);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -5260,14 +5263,14 @@ var app = (function () {
     		block,
     		id: create_pending_block$1.name,
     		type: "pending",
-    		source: "(50:23)    <p>Loading Orders</p>   {:then orders}",
+    		source: "(61:23)    <p>Loading Orders</p>   {:then orders}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (85:36) 
+    // (96:36) 
     function create_if_block_2(ctx) {
     	let button;
     	let t;
@@ -5280,7 +5283,7 @@ var app = (function () {
     			t = text("Completed");
     			attr_dev(button, "class", "primary md svelte-1iwfgnh");
     			button.disabled = /*sending*/ ctx[1];
-    			add_location(button, file$b, 85, 8, 2666);
+    			add_location(button, file$b, 96, 8, 2958);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
@@ -5307,14 +5310,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(85:36) ",
+    		source: "(96:36) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (83:8) {#if !review.accepted}
+    // (94:8) {#if !review.accepted}
     function create_if_block_1$1(ctx) {
     	let button;
     	let t;
@@ -5327,7 +5330,7 @@ var app = (function () {
     			t = text("Accepted");
     			attr_dev(button, "class", "primary md svelte-1iwfgnh");
     			button.disabled = /*sending*/ ctx[1];
-    			add_location(button, file$b, 83, 8, 2510);
+    			add_location(button, file$b, 94, 8, 2802);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
@@ -5354,14 +5357,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$1.name,
     		type: "if",
-    		source: "(83:8) {#if !review.accepted}",
+    		source: "(94:8) {#if !review.accepted}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (88:8) {#if !review.paid}
+    // (99:8) {#if !review.paid}
     function create_if_block$5(ctx) {
     	let button;
     	let t;
@@ -5374,7 +5377,7 @@ var app = (function () {
     			t = text("Paid");
     			attr_dev(button, "class", "primary md svelte-1iwfgnh");
     			button.disabled = /*sending*/ ctx[1];
-    			add_location(button, file$b, 88, 8, 2828);
+    			add_location(button, file$b, 99, 8, 3120);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
@@ -5401,14 +5404,14 @@ var app = (function () {
     		block,
     		id: create_if_block$5.name,
     		type: "if",
-    		source: "(88:8) {#if !review.paid}",
+    		source: "(99:8) {#if !review.paid}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (78:0) <Review bind:review={review}>
+    // (89:0) <Review bind:review={review}>
     function create_default_slot$1(ctx) {
     	let div3;
     	let div1;
@@ -5452,14 +5455,14 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Back to orders";
     			attr_dev(div0, "class", "buttons svelte-1iwfgnh");
-    			add_location(div0, file$b, 81, 6, 2449);
-    			add_location(div1, file$b, 79, 4, 2400);
+    			add_location(div0, file$b, 92, 6, 2741);
+    			add_location(div1, file$b, 90, 4, 2692);
     			attr_dev(button, "class", "secondary md svelte-1iwfgnh");
-    			add_location(button, file$b, 93, 6, 2998);
+    			add_location(button, file$b, 104, 6, 3290);
     			attr_dev(div2, "class", "back svelte-1iwfgnh");
-    			add_location(div2, file$b, 92, 4, 2973);
+    			add_location(div2, file$b, 103, 4, 3265);
     			attr_dev(div3, "class", "inner svelte-1iwfgnh");
-    			add_location(div3, file$b, 78, 2, 2376);
+    			add_location(div3, file$b, 89, 2, 2668);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div3, anchor);
@@ -5537,7 +5540,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$1.name,
     		type: "slot",
-    		source: "(78:0) <Review bind:review={review}>",
+    		source: "(89:0) <Review bind:review={review}>",
     		ctx
     	});
 
@@ -5561,8 +5564,8 @@ var app = (function () {
     		pending: create_pending_block$1,
     		then: create_then_block$1,
     		catch: create_catch_block$1,
-    		value: 10,
-    		error: 11,
+    		value: 12,
+    		error: 13,
     		blocks: [,,,]
     	};
 
@@ -5593,8 +5596,8 @@ var app = (function () {
     			info.block.c();
     			t2 = space();
     			create_component(review_1.$$.fragment);
-    			add_location(h2, file$b, 47, 0, 1242);
-    			add_location(div, file$b, 48, 0, 1266);
+    			add_location(h2, file$b, 58, 0, 1534);
+    			add_location(div, file$b, 59, 0, 1558);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -5616,13 +5619,13 @@ var app = (function () {
 
     			if (dirty & /*todaysOrders*/ 4 && promise !== (promise = /*todaysOrders*/ ctx[2]) && handle_promise(promise, info)) ; else {
     				const child_ctx = ctx.slice();
-    				child_ctx[10] = info.resolved;
+    				child_ctx[12] = info.resolved;
     				info.block.p(child_ctx, dirty);
     			}
 
     			const review_1_changes = {};
 
-    			if (dirty & /*$$scope, review, sending*/ 4099) {
+    			if (dirty & /*$$scope, review, sending*/ 16387) {
     				review_1_changes.$$scope = { dirty, ctx };
     			}
 
@@ -5680,7 +5683,12 @@ var app = (function () {
     function instance$b($$self, $$props, $$invalidate) {
     	let review = false;
     	let sending = false;
-    	let todaysOrders = fetch("/orders/").then(toData).then(data => data.orders);
+    	let todaysOrders = refresh();
+    	const interval = setInterval(refresh, 1000);
+
+    	onDestroy(() => {
+    		clearInterval(interval);
+    	});
 
     	function editOrder(e) {
     		$$invalidate(0, review = e.detail);
@@ -5709,6 +5717,17 @@ var app = (function () {
     		});
     	}
 
+    	function refresh() {
+    		if (!sending) {
+    			const updatedOrders = fetch("/orders/").then(toData).then(data => data.orders).then(orders => {
+    				$$invalidate(2, todaysOrders = updatedOrders);
+    				return orders;
+    			});
+
+    			return updatedOrders;
+    		}
+    	}
+
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
@@ -5728,6 +5747,7 @@ var app = (function () {
     	}
 
     	$$self.$capture_state = () => ({
+    		onDestroy,
     		Review,
     		OrderList,
     		OrderReview,
@@ -5736,8 +5756,10 @@ var app = (function () {
     		review,
     		sending,
     		todaysOrders,
+    		interval,
     		editOrder,
-    		sendUpdateOrder
+    		sendUpdateOrder,
+    		refresh
     	});
 
     	$$self.$inject_state = $$props => {
@@ -5749,14 +5771,6 @@ var app = (function () {
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
-
-    	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*review*/ 1) {
-    			 {
-    				if (review) document.body.style = "overflow: hidden;"; else document.body.style = "";
-    			}
-    		}
-    	};
 
     	return [
     		review,
@@ -7485,7 +7499,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (89:2) {:else}
+    // (90:2) {:else}
     function create_else_block_1$2(ctx) {
     	let h3;
     	let t_value = /*item*/ ctx[0].name + "";
@@ -7496,7 +7510,7 @@ var app = (function () {
     			h3 = element("h3");
     			t = text(t_value);
     			attr_dev(h3, "class", "svelte-1a4j597");
-    			add_location(h3, file$g, 89, 2, 2804);
+    			add_location(h3, file$g, 90, 2, 2883);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h3, anchor);
@@ -7514,14 +7528,14 @@ var app = (function () {
     		block,
     		id: create_else_block_1$2.name,
     		type: "else",
-    		source: "(89:2) {:else}",
+    		source: "(90:2) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (87:2) {#if !item.id}
+    // (88:2) {#if !item.id}
     function create_if_block_1$4(ctx) {
     	let h3;
 
@@ -7530,7 +7544,7 @@ var app = (function () {
     			h3 = element("h3");
     			h3.textContent = "New Item";
     			attr_dev(h3, "class", "svelte-1a4j597");
-    			add_location(h3, file$g, 87, 2, 2774);
+    			add_location(h3, file$g, 88, 2, 2853);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h3, anchor);
@@ -7545,14 +7559,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$4.name,
     		type: "if",
-    		source: "(87:2) {#if !item.id}",
+    		source: "(88:2) {#if !item.id}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (108:6) {#each vatOptions as option}
+    // (109:6) {#each vatOptions as option}
     function create_each_block$7(ctx) {
     	let option;
     	let t0_value = /*option*/ ctx[21].text + "";
@@ -7567,7 +7581,7 @@ var app = (function () {
     			t1 = space();
     			option.__value = option_value_value = /*option*/ ctx[21];
     			option.value = option.__value;
-    			add_location(option, file$g, 108, 6, 3586);
+    			add_location(option, file$g, 109, 6, 3665);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -7584,14 +7598,14 @@ var app = (function () {
     		block,
     		id: create_each_block$7.name,
     		type: "each",
-    		source: "(108:6) {#each vatOptions as option}",
+    		source: "(109:6) {#each vatOptions as option}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (124:4) {:else}
+    // (125:4) {:else}
     function create_else_block$3(ctx) {
     	let button0;
     	let t0;
@@ -7609,9 +7623,9 @@ var app = (function () {
     			button1.textContent = "Delete Item";
     			attr_dev(button0, "class", "primary md");
     			button0.disabled = /*sending*/ ctx[8];
-    			add_location(button0, file$g, 124, 4, 4041);
+    			add_location(button0, file$g, 125, 4, 4120);
     			attr_dev(button1, "class", "secondary md");
-    			add_location(button1, file$g, 125, 4, 4130);
+    			add_location(button1, file$g, 126, 4, 4209);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button0, anchor);
@@ -7646,14 +7660,14 @@ var app = (function () {
     		block,
     		id: create_else_block$3.name,
     		type: "else",
-    		source: "(124:4) {:else}",
+    		source: "(125:4) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (122:4) {#if !item.id}
+    // (123:4) {#if !item.id}
     function create_if_block$8(ctx) {
     	let button;
     	let t;
@@ -7666,7 +7680,7 @@ var app = (function () {
     			t = text("Add Item");
     			attr_dev(button, "class", "primary md");
     			button.disabled = /*sending*/ ctx[8];
-    			add_location(button, file$g, 122, 4, 3946);
+    			add_location(button, file$g, 123, 4, 4025);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
@@ -7693,7 +7707,7 @@ var app = (function () {
     		block,
     		id: create_if_block$8.name,
     		type: "if",
-    		source: "(122:4) {#if !item.id}",
+    		source: "(123:4) {#if !item.id}",
     		ctx
     	});
 
@@ -7833,53 +7847,53 @@ var app = (function () {
     			if_block1.c();
     			attr_dev(p0, "class", "error svelte-1a4j597");
     			toggle_class(p0, "show", /*error*/ ctx[6]);
-    			add_location(p0, file$g, 91, 2, 2835);
+    			add_location(p0, file$g, 92, 2, 2914);
     			attr_dev(label0, "for", "name");
     			attr_dev(label0, "class", "svelte-1a4j597");
-    			add_location(label0, file$g, 94, 6, 2959);
+    			add_location(label0, file$g, 95, 6, 3038);
     			attr_dev(input0, "id", "name");
     			attr_dev(input0, "type", "text");
     			input0.required = true;
     			attr_dev(input0, "class", "svelte-1a4j597");
     			toggle_class(input0, "invalid", /*errors*/ ctx[7].name);
-    			add_location(input0, file$g, 95, 6, 3002);
+    			add_location(input0, file$g, 96, 6, 3081);
     			attr_dev(div0, "class", "name svelte-1a4j597");
-    			add_location(div0, file$g, 93, 4, 2934);
+    			add_location(div0, file$g, 94, 4, 3013);
     			attr_dev(p1, "class", "error svelte-1a4j597");
     			toggle_class(p1, "show", /*errors*/ ctx[7].name);
-    			add_location(p1, file$g, 97, 4, 3139);
+    			add_location(p1, file$g, 98, 4, 3218);
     			attr_dev(label1, "for", "description");
     			attr_dev(label1, "class", "svelte-1a4j597");
-    			add_location(label1, file$g, 99, 4, 3231);
+    			add_location(label1, file$g, 100, 4, 3310);
     			attr_dev(textarea, "id", "description");
     			attr_dev(textarea, "class", "svelte-1a4j597");
-    			add_location(textarea, file$g, 100, 4, 3281);
+    			add_location(textarea, file$g, 101, 4, 3360);
     			attr_dev(div1, "class", "description svelte-1a4j597");
-    			add_location(div1, file$g, 98, 2, 3201);
+    			add_location(div1, file$g, 99, 2, 3280);
     			attr_dev(label2, "for", "price");
     			attr_dev(label2, "class", "svelte-1a4j597");
-    			add_location(label2, file$g, 103, 4, 3380);
+    			add_location(label2, file$g, 104, 4, 3459);
     			attr_dev(input1, "type", "number");
     			attr_dev(input1, "id", "price");
     			attr_dev(input1, "class", "svelte-1a4j597");
     			toggle_class(input1, "invalid", /*errors*/ ctx[7].price);
-    			add_location(input1, file$g, 104, 5, 3419);
+    			add_location(input1, file$g, 105, 5, 3498);
     			if (/*vatChoice*/ ctx[4] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[18].call(select));
-    			add_location(select, file$g, 106, 4, 3513);
+    			add_location(select, file$g, 107, 4, 3592);
     			attr_dev(p2, "class", "error svelte-1a4j597");
     			toggle_class(p2, "show", /*errors*/ ctx[7].price);
-    			add_location(p2, file$g, 113, 4, 3680);
+    			add_location(p2, file$g, 114, 4, 3759);
     			attr_dev(p3, "class", "error svelte-1a4j597");
     			toggle_class(p3, "show", /*errors*/ ctx[7].vat);
-    			add_location(p3, file$g, 114, 4, 3746);
+    			add_location(p3, file$g, 115, 4, 3825);
     			attr_dev(div2, "class", "price svelte-1a4j597");
-    			add_location(div2, file$g, 102, 2, 3356);
-    			add_location(form, file$g, 92, 2, 2885);
+    			add_location(div2, file$g, 103, 2, 3435);
+    			add_location(form, file$g, 93, 2, 2964);
     			attr_dev(div3, "class", "visible svelte-1a4j597");
-    			add_location(div3, file$g, 117, 2, 3825);
+    			add_location(div3, file$g, 118, 2, 3904);
     			attr_dev(div4, "class", "buttons svelte-1a4j597");
-    			add_location(div4, file$g, 120, 2, 3901);
-    			add_location(div5, file$g, 85, 0, 2749);
+    			add_location(div4, file$g, 121, 2, 3980);
+    			add_location(div5, file$g, 86, 0, 2828);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -8142,7 +8156,8 @@ var app = (function () {
     				data.sectionId = section.id;
     				dispatch("update", { "item": data });
     				$$invalidate(0, item = data);
-    				$$invalidate(1, { name, description, price, vat, visible } = data, name, $$invalidate(2, description), $$invalidate(3, price), $$invalidate(5, visible));
+    				$$invalidate(1, { name, description, price, visible } = data, name, $$invalidate(2, description), $$invalidate(3, price), $$invalidate(5, visible));
+    				$$invalidate(4, vatChoice = vatOptions.find(choice => choice.val == data.vat) || vatChoice);
     			}
 
     			$$invalidate(8, sending = false);
@@ -8608,8 +8623,6 @@ var app = (function () {
     }
 
     /* src/dashboard/MenuEdit.svelte generated by Svelte v3.23.2 */
-
-    const { console: console_1$2 } = globals;
     const file$i = "src/dashboard/MenuEdit.svelte";
 
     function get_each_context_1(ctx, list, i) {
@@ -8648,7 +8661,7 @@ var app = (function () {
     	return block;
     }
 
-    // (129:34)      {#each sections as section, i (section.id)}
+    // (127:34)      {#each sections as section, i (section.id)}
     function create_then_block$3(ctx) {
     	let each_blocks = [];
     	let each_1_lookup = new Map();
@@ -8720,14 +8733,14 @@ var app = (function () {
     		block,
     		id: create_then_block$3.name,
     		type: "then",
-    		source: "(129:34)      {#each sections as section, i (section.id)}",
+    		source: "(127:34)      {#each sections as section, i (section.id)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (146:10) {#each section.items as item, j (item.id)}
+    // (144:10) {#each section.items as item, j (item.id)}
     function create_each_block_1(key_1, ctx) {
     	let first;
     	let dashboardmenuitem;
@@ -8798,14 +8811,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(146:10) {#each section.items as item, j (item.id)}",
+    		source: "(144:10) {#each section.items as item, j (item.id)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (130:4) {#each sections as section, i (section.id)}
+    // (128:4) {#each sections as section, i (section.id)}
     function create_each_block$8(key_1, ctx) {
     	let div6;
     	let div3;
@@ -8903,32 +8916,32 @@ var app = (function () {
     			button3 = element("button");
     			button3.textContent = "Add New Item";
     			t12 = space();
-    			add_location(h3, file$i, 133, 12, 5146);
+    			add_location(h3, file$i, 131, 12, 5071);
     			attr_dev(p, "class", "description");
-    			add_location(p, file$i, 134, 12, 5182);
+    			add_location(p, file$i, 132, 12, 5107);
     			attr_dev(div0, "class", "details svelte-hjs7g4");
-    			add_location(div0, file$i, 132, 10, 5112);
+    			add_location(div0, file$i, 130, 10, 5037);
     			attr_dev(button0, "class", "primary md");
-    			add_location(button0, file$i, 137, 12, 5276);
-    			add_location(div1, file$i, 136, 10, 5258);
+    			add_location(button0, file$i, 135, 12, 5201);
+    			add_location(div1, file$i, 134, 10, 5183);
     			attr_dev(button1, "class", "primary svelte-hjs7g4");
     			button1.disabled = button1_disabled_value = /*i*/ ctx[24] === 0;
-    			add_location(button1, file$i, 140, 12, 5424);
+    			add_location(button1, file$i, 138, 12, 5349);
     			attr_dev(button2, "class", "primary svelte-hjs7g4");
     			button2.disabled = button2_disabled_value = /*i*/ ctx[24] === /*sections*/ ctx[21].length - 1;
-    			add_location(button2, file$i, 141, 12, 5528);
+    			add_location(button2, file$i, 139, 12, 5453);
     			attr_dev(div2, "class", "up-down svelte-hjs7g4");
-    			add_location(div2, file$i, 139, 10, 5390);
+    			add_location(div2, file$i, 137, 10, 5315);
     			attr_dev(div3, "class", "section-inner svelte-hjs7g4");
-    			add_location(div3, file$i, 131, 8, 5074);
-    			add_location(div4, file$i, 144, 8, 5679);
+    			add_location(div3, file$i, 129, 8, 4999);
+    			add_location(div4, file$i, 142, 8, 5604);
     			attr_dev(button3, "class", "primary md");
-    			add_location(button3, file$i, 153, 10, 6096);
+    			add_location(button3, file$i, 151, 10, 6021);
     			attr_dev(div5, "class", "add-new svelte-hjs7g4");
-    			add_location(div5, file$i, 152, 8, 6064);
+    			add_location(div5, file$i, 150, 8, 5989);
     			attr_dev(div6, "class", "section");
     			toggle_class(div6, "hidden", !/*section*/ ctx[22].visible);
-    			add_location(div6, file$i, 130, 6, 5012);
+    			add_location(div6, file$i, 128, 6, 4937);
     			this.first = div6;
     		},
     		m: function mount(target, anchor) {
@@ -9032,7 +9045,7 @@ var app = (function () {
     		block,
     		id: create_each_block$8.name,
     		type: "each",
-    		source: "(130:4) {#each sections as section, i (section.id)}",
+    		source: "(128:4) {#each sections as section, i (section.id)}",
     		ctx
     	});
 
@@ -9061,7 +9074,7 @@ var app = (function () {
     	return block;
     }
 
-    // (165:0) <Review bind:review={review}>
+    // (163:0) <Review bind:review={review}>
     function create_default_slot$3(ctx) {
     	let switch_instance;
     	let t0;
@@ -9100,9 +9113,9 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Back to menu";
     			attr_dev(button, "class", "primary md");
-    			add_location(button, file$i, 167, 4, 6548);
+    			add_location(button, file$i, 165, 4, 6473);
     			attr_dev(div, "class", "back svelte-hjs7g4");
-    			add_location(div, file$i, 166, 2, 6525);
+    			add_location(div, file$i, 164, 2, 6450);
     		},
     		m: function mount(target, anchor) {
     			if (switch_instance) {
@@ -9172,7 +9185,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$3.name,
     		type: "slot",
-    		source: "(165:0) <Review bind:review={review}>",
+    		source: "(163:0) <Review bind:review={review}>",
     		ctx
     	});
 
@@ -9236,12 +9249,12 @@ var app = (function () {
     			button.textContent = "Add New Menu Section";
     			t4 = space();
     			create_component(review_1.$$.fragment);
-    			add_location(h2, file$i, 126, 0, 4903);
-    			add_location(div0, file$i, 127, 0, 4917);
+    			add_location(h2, file$i, 124, 0, 4828);
+    			add_location(div0, file$i, 125, 0, 4842);
     			attr_dev(button, "class", "primary md");
-    			add_location(button, file$i, 161, 2, 6276);
+    			add_location(button, file$i, 159, 2, 6201);
     			attr_dev(div1, "class", "add-new svelte-hjs7g4");
-    			add_location(div1, file$i, 160, 0, 6252);
+    			add_location(div1, file$i, 158, 0, 6177);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -9336,7 +9349,6 @@ var app = (function () {
     	let reviewData = {};
 
     	let menuItems = fetch("/menu/").then(response => response.json()).then(data => {
-    		console.log(data.sections);
     		return data.sections;
     	});
 
@@ -9363,8 +9375,6 @@ var app = (function () {
     	}
 
     	function updateItemOrSection(e) {
-    		console.log(e.detail);
-
     		if (e.detail.section) $$invalidate(2, menuItems = menuItems.then(sections => {
     			$$invalidate(0, review = false);
     			const index = sections.findIndex(section => section.id === e.detail.section.id);
@@ -9456,7 +9466,7 @@ var app = (function () {
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$2.warn(`<MenuEdit> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<MenuEdit> was created with unknown prop '${key}'`);
     	});
 
     	let { $$slots = {}, $$scope } = $$props;

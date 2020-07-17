@@ -43,7 +43,8 @@
         data.sectionId = section.id;
         dispatch('update', {'item': data});
         item = data;
-        ({name, description, price, vat, visible} = data);
+        ({name, description, price, visible} = data);
+        vatChoice = vatOptions.find(choice => choice.val == data.vat) || vatChoice;
       }
       sending = false;
     });
