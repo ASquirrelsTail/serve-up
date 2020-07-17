@@ -13,8 +13,6 @@ pyinst_args = [
     '--hidden-import=tables.admin',
     '--hidden-import=orders.admin',
     '--hidden-import=menu.admin',
-    '--hidden-import=serve_admin.management.commands.createdefaultgroup',
-    '--hidden-import=visitors.management.commands.deleteoldvisitors',
     '--clean',
 ]
 
@@ -26,3 +24,8 @@ dist_static_path = os.path.join('dist', 'static')
 if not os.path.exists(dist_static_path):
     os.mkdir(dist_static_path)
 copy_tree('static', dist_static_path)
+
+dist_templates_path = os.path.join('dist', 'templates')
+if not os.path.exists(dist_templates_path):
+    os.mkdir(dist_templates_path)
+copy_tree('templates', dist_templates_path)

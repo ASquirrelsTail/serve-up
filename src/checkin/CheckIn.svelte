@@ -35,7 +35,7 @@
 </script>
 
 <h1>Check In</h1>
-<p>Please enter the group's names and contact detals for at least one person who can provide details for the others. The information you provide will not shared with anyone except for NHS Track and Trace and will be deleted after 21 days.</p>
+<p>Please enter the group's names and contact details for at least one person who can provide details for the others. The information you provide will not be shared with anyone except for NHS Track and Trace and will be deleted after 21 days.</p>
 <p>If you would prefer to leave your details in written form please speak to a member of staff.</p>
 <p class="error" class:visible={error} bind:this={errorMessage}>{error}</p>
 {#each visitors as visitor, i (i)}

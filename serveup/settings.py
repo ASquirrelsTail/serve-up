@@ -38,17 +38,17 @@ PORT = os.environ.get('PORT', '8080')
 # Application definition
 
 INSTALLED_APPS = [
-    'tables',
-    'visitors',
-    'menu',
-    'orders',
-    'serve_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tables',
+    'visitors',
+    'menu',
+    'orders',
+    'serve_admin',
 ]
 
 MIDDLEWARE = [
@@ -133,5 +133,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+WHITENOISE_AUTOREFRESH = True
+
+
+# One time admin token created on server start
 
 ADMIN_TOKEN = uuid4().hex

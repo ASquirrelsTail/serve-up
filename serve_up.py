@@ -46,9 +46,11 @@ def main():
         call_command('collectstatic', verbosity=0)
     if not database_exists:
         call_command('createsuperuser', '--username', 'Admin', '--email', 'none@none.com', interactive=False, verbosity=0)
-        call_command('createdefaultgroup')
+        from serve_admin.management.commands.createdefaultgroup import Command as createdefaultgroup
+        createdefaultgroup().handle()
 
-    call_command('deleteoldvisitors')
+    from visitors.management.commands.deleteoldvisitors import Command as deleteoldvisitors
+    deleteoldvisitors().handle()
 
     create_dashboard_qr()
 
