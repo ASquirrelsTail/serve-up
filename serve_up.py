@@ -12,7 +12,9 @@ base_dir = os.path.dirname(os.path.abspath(__file__))
 
 def open_site():
     from django.conf import settings
-    webbrowser.open('http://localhost:{}/admin/token/{}/'.format(8080, settings.ADMIN_TOKEN))
+    url = 'http://localhost:{}/admin/token/{}/'.format(8080, settings.ADMIN_TOKEN)
+    print('Admin Panel:', url)
+    webbrowser.open(url)
 
 
 def create_settings_file():
@@ -47,16 +49,19 @@ def main():
     if not database_exists:
         call_command('createsuperuser', '--username', 'Admin', '--email', 'none@none.com', interactive=False, verbosity=0)
         from serve_admin.management.commands.createdefaultgroup import Command as createdefaultgroup
-        createdefaultgroup().handle()
+        call_command(createdefaultgroup())
 
     from visitors.management.commands.deleteoldvisitors import Command as deleteoldvisitors
-    deleteoldvisitors().handle()
+    call_command(deleteoldvisitors())
 
     create_dashboard_qr()
 
+    with open(os.path.join(base_dir, 'settings.json'), 'r') as settings_file:
+        settings = json.load(settings_file)
+
     open_site()
     from serveup import wsgi
-    serve(wsgi.application, host='0.0.0.0', port=8080)
+    serve(wsgi.application, host='0.0.0.0', port=settings.get('port', os.environ.get('PORT', 8080)))
 
 
 if __name__ == '__main__':

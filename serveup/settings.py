@@ -32,7 +32,7 @@ SECRET_KEY = settings.get('secret_key', os.environ.get('SECRET_KEY'))
 DEBUG = os.environ.get('DEBUG', False)
 
 ALLOWED_HOSTS = [IP, 'localhost']
-PORT = os.environ.get('PORT', '8080')
+PORT = settings.get('port', os.environ.get('PORT', 8080))
 
 
 # Application definition

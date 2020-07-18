@@ -10,6 +10,9 @@ class TokenLoginView(View):
     used = False
 
     def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated and request.user.is_staff:
+            return redirect('admin:index')
+
         if kwargs['slug'] != settings.ADMIN_TOKEN or self.used is True:
             raise PermissionDenied
 

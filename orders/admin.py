@@ -4,7 +4,7 @@ from orders.models import Order, OrderItem
 
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
-    readonly_fields = ('total',)
+    readonly_fields = ('total', 'vat_total')
     extra = 1
 
 

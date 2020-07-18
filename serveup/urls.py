@@ -48,7 +48,7 @@ tables_urls = [
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('admin/token/<slug:slug>/', TokenLoginView.as_view()),
+    path('admin/token/<slug:slug>/', TokenLoginView.as_view(), name='admin-token'),
     path('menu/', include(menu_urls)),
     path('dashboard/', DashboardView.as_view(), name='dashboard'),
     path('orders/', include(orders_urls)),
